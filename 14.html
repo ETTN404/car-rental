@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Rental Sample</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    /* Navbar Container */
+    .navbar-container {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
+      background-color: transparent;
+      transition: background 0.3s ease;
+    }
+
+    /* Upper Navbar for Sharing Logos - Aligned left */
+    .navbar-upper {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0px 20px;
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .navbar-upper a {
+      color: white;
+      text-decoration: none;
+      margin: 16px 10px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .navbar-upper a i {
+      font-size: 15px; /* Adjust icon size as needed */
+      margin-right: 5px; /* Space between icon and text (if any text is added later) */
+    }
+
+    /* Divider Line with Marker */
+    .navbar-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.57);
+      width: 100%;
+      position: relative;
+      margin: 0;
+    }
+    .navbar-marker {
+      height: 4px;
+      width: 20px;
+      background-color: #52A48E;
+      position: absolute;
+      top: -1px;
+      transition: all 0.3s ease;
+      
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    /* Lower Navbar */
+    .navbar-lower {
+      background: transparent;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding-right:150px;
+      justify-content: right;
+    }
+    .navbar-lower a {
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1.62;
+      border-radius: 0;
+      border: 0;
+      transition: color 0.3s ease-out;
+      -webkit-transition: color 0.3s ease-out;
+      -moz-transition: color 0.3s ease-out;
+      padding: 0 10px;
+       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .navbar-lower a:hover {
+  color: #52A48E; /* Green color */
+}
+
+.dropdown-trigger:hover {
+  color: #52A48E; /* Green color */
+}
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    
+    
+    .contact-info {
+      display: flex;
+      align-items: center;
+      margin-left: 30px;
+    }
+    
+    .contact-info span {
+      margin-right: 20px;
+      font-size: 13px;
+      color: white;
+    }
+    
+    .contact-info i {
+      margin-right: 5px;
+    }
+
+    /* Category Dropdown */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-trigger {
+  cursor: pointer;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0 10px;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  line-height: 1.62;
+  
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 50px; /* 30px from text downward */
+      left: 0;
+      top:83px;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s;
+    }
+    
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    
+    .triangle {
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid  #f5f5f5;;
+    }
+
+    /* Language Dropdown */
+    .lang-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .lang-dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      right: 0;
+      min-width: 120px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+      z-index: 2;
+    }
+    
+    .lang-dropdown.active .lang-dropdown-content {
+      display: block;
+    }
+    
+    .lang-dropdown-content a {
+      color: black;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Header Section with Triangle Bottom */
+    .header-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./gc.png') no-repeat center center;
+      background-size: cover;
+      height: 400px;
+      position: relative;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .triangle-left {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-right: 50vw solid transparent;
+      border-bottom: 95px solid #f5f5f5;;
+    }
+
+    .triangle-right {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-left: 50vw solid transparent;
+      border-bottom: 95px solid #f5f5f5;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+    .header-content h1 {
+     
+      font-size: 36px;
+      margin:23px; padding-top: 30%;
+    }
+    .header-content p {
+      margin: 15px 0 0 0;
+      font-size: 14px;
+    }
+
+    /* Description Section - Aligned with cards */
+    .description {
+      padding: 30px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .description h2 {
+      margin-bottom: 15px;
+    }
+    .description p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Card Grid - Limited to 3 cards */
+    .card-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      width: calc(33.33% - 20px);
+      min-width: 300px;
+      border: 1px solid #ddd;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .price {
+      position: absolute;
+      top: 40%;
+      right: 0px;
+  text-align: right;
+      background:  linear-gradient(to right,rgba(255, 0, 0, 0), rgb(255, 0, 0));
+      color: white;
+      padding: 10px 20px 10px 40px;
+          font-size: 15px;
+    font-weight: 500;
+    }
+    
+    .whats {
+      position: absolute;
+      top: 3px;
+      left: 0px;
+      background: red;
+      color: white;
+      padding: 5px 10px;
+      font-size: 12px;
+    font-weight: 500;
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .card-content h3 {
+      margin: 20px 0;
+      text-align:center;
+    }
+    .card-icons {
+      display: flex;
+      padding-top:10px;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .card-buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+    .card-buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .whatsapp { background-color:#52A48E; color: white;    padding: 10px 20px !important; }
+    .call { background-color:rgb(43, 42, 73); color: white;    padding: 10px 20px !important; }
+
+    /* Floating Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+    .floating-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #52A48E; /* WhatsApp green */
+      color: white;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+    .floating-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+    .floating-button.call {
+      background-color: #5e5eeb; /* Call purple */
+    }
+    .floating-button i {
+      pointer-events: none; /* Prevents icon from interfering with button click */
+    }
+    
+    /* New Section with Car Image */
+    .car-rental-section {
+      max-width: 1200px;
+      margin: 40px auto;
+      text-align:left;
+      padding: 20px;
+    }
+    .car-rental-section h2 {
+      margin-bottom: 15px;
+      color: #000000;
+      font-size: 24px;
+      font-weight: 800;
+      font-style: italic;
+    }
+    .car-rental-section p {
+      color: #666;
+      margin-bottom: 20px;
+      font-size: 13px;
+      line-height: 1.777;
+    }
+    .car-image {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .elementor-divider-separator {
+      border-top: 1px solid #ddd;
+      margin: 15px 0;
+    }
+    .navbar-lower a:hover,
+.dropdown-trigger:hover {
+  color: #52A48E;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* For the dropdown arrow */
+.navbar-lower a:hover::after,
+.dropdown-trigger:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+.dropdown-trigger::after {
+  content: '';
+  font-size: 0.7em;
+  display: inline-block;
+  opacity: 0.7;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-trigger:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+  color: #52A48E;
+}
+.navbar-lower a {
+  position: relative;
+}
+
+.navbar-lower a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #52A48E;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.navbar-lower a:hover::after {
+  width: 100%;
+}
+
+.divider {
+  display: flex;
+  justify-content: flex-start; /* Aligns child to left */
+}
+
+.elementor-divider-separator {
+  width: 200px; /* Adjust width as needed */
+  height: 1px;
+  background-color: #000;
+  border: none;
+  margin: 15px 0;
+}
+
+
+
+  /* FAQ Section Styles */
+    .faq-section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    
+    .faq-section h2 {
+      color: #000;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .faq-section p.intro {
+      color: #666;
+      text-align: center;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .faq-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      align-items: start; /* Align items at the top */
+    }
+    
+    .faq-item {
+      background: #f5f5f5;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      display: flex;
+      padding:22px;
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .faq-item:hover {
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      transform: translateY(-3px);
+    }
+    
+    .faq-question {
+      padding: 20px;
+      background-color: #f5f5f5;
+      cursor: pointer;
+      font-weight: bold;
+      position: relative;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      text-align: left;
+    }
+    /*
+    .faq-question:after {
+      content: '+';
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      font-size: 20px;
+      transition: all 0.3s ease;
+    }
+    .faq-item.active .faq-question:after {
+      content: '-';
+    }*/
+.faq-question:after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 40%;
+  transform: translateY(-50%) rotate(90deg); /* Points down */
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-question:after {
+  transform: translateY(-50%) rotate(-90deg); /* Points up */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23E8AD25'%3E%3Cpath d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z'/%3E%3C/svg%3E");
+}
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .faq-item.active:hover {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    .faq-item.active .faq-question {
+      background-color: #f5f5f5;
+      color: #E8AD25;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+    
+   
+    
+   
+
+    @media (max-width: 768px) {
+    
+      .faq-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .faq-question {
+        text-align: left;
+        padding-right: 40px;
+      }
+    }
+
+    /*card view image zoom when hover*/
+    .card {
+  width: calc(33.33% - 20px);
+  min-width: 300px;
+  border: 1px solid #ddd;
+  overflow: hidden; /* This is important for the zoom effect */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease; /* Smooth zoom transition */
+}
+
+.card:hover img {
+  transform: scale(1.05); /* Zoom factor (5% larger) */
+}
+
+/* To prevent the zoom from being cut off by the card's overflow */
+.card-content {
+  padding: 15px;
+  position: relative; /* Ensures content stays above the image */
+  z-index: 1;
+  background: white; /* Solid background so zoomed image doesn't show through */
+}
+
+/* Office Location/Footer Section */
+.office-location {
+  margin: 60px 0 0;
+  padding: 130px 20px;
+  position: relative;
+  color: white;
+  text-align: center;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('./GREEN-CAR.PNG') no-repeat center center/cover;
+}
+
+/* Office Logo */
+.office-logo {
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.office-logo img {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Contact Container */
+.contact-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.contact-container h2 {
+      
+  font-size: 16px;
+    color: rgba(255, 255, 255, .5);
+    letter-spacing: .1em;
+}
+
+.address {
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin: 50px auto;
+  max-width: 800px;
+}
+
+.contact-item {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+ 
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.contact-item h3 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #52A48E;
+}
+
+.contact-item p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Corner Decorations */
+
+ .topright {
+    position:absolute;
+  top:-37px !important;
+  width: 100;
+ right:0px;
+}
+.topleft{
+
+    position:absolute;
+  top:-37px !important;
+  width: 100;
+ left:0px;
+}
+
+.bottomright {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50%; /* Adjust width as needed */
+  height: 80px; /* Adjust height */
+  background: #f5f5f5;
+  clip-path: polygon(
+    0 0,          /* Top-left corner (unchanged) */
+    90% 0,        /* Top-right cut starts here */
+    100% 100%,    /* Bottom-right corner (where the cut ends) */
+    0 100%        /* Bottom-left corner (straight edge) */
+  );
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 50%;
+  height: 80px;
+  background: #f5f5f5;
+  clip-path: polygon(
+    10% 0,       /* Start cut 20% from left */
+    100% 0,      /* Top-right corner */
+    100% 100%,   /* Bottom-right corner */
+    0 100%       /* Bottom-left corner */
+  );
+}
+
+
+/* Back to Top Button */
+.back-to-top {
+  position: absolute;
+  left: 50%;
+  top: 65px;
+  transform: translateX(-50%);
+  width: 8vw;
+  min-width: 2%;
+  max-width: 5%;
+  aspect-ratio: 2/1;
+  background-color: #52A48E;
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+  font-size: clamp(14px, 1.5vw, 22px);
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  
+  /* White border solution */
+  position: relative;
+}
+.back-to-top div{
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  width: 50%;
+  height:50%;
+  background:white;
+  margin-top:3px;
+}
+.back-to-top-2 {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translateX(-50%);
+  
+
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:rgba(255, 255, 255, 0.68);
+  text-decoration: none;
+  font-size: clamp(12px, 1.5vw, 16px);
+  transition: all 0.3s ease;
+  text-align: center;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  
+  /* White border solution */
+  position: relative;
+}
+
+/* Pseudo-element for the border */
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background:#52A48E;
+  clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+  z-index: -1;
+}
+
+/* Copyright Section */
+.copyright {
+  background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #999;
+  margin-top:43px;
+}
+
+
+/*  two parallel container  */
+
+.line-container {
+      position: relative;
+      width: 100%;
+      height: 10px; /* Adjust height as needed */
+      
+    }
+
+    .line2, .line1 {
+      position: absolute;
+      height: 1px !important;
+      background-color: #ccc; /* light gray lines */
+    }
+
+    .line1 {
+      width: 15%;  /* First line length */
+      top: 0;
+      left: 40%;    /* Slightly indented from the left */
+    }
+
+    .line2 {
+      width: 15%;  /* Second line length */
+      top: 5px;    /* Vertical distance between the two lines */
+      left: 45%;   /* More indented than the first */
+    }
+    .card-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.feature-icon {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-text {
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.feature-separator {
+  color: #ccc;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+}
+@media (max-width: 1024px) {
+  /* Tablet styles */
+  .card {
+    width: calc(50% - 20px);
+  }
+  
+  .navbar-lower {
+    padding-right: 20px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile styles */
+  .header-content h1 {
+    font-size: 28px;
+    padding-top: 40%;
+  }
+  
+  .navbar-lower {
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 10px;
+  }
+  
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .contact-info {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+  
+  .card {
+    width: 100%;
+  }
+  
+  .description {
+    padding: 20px;
+  }
+  
+  .car-rental-section {
+    padding: 15px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .navbar-upper a {
+    margin: 10px 5px;
+    font-size: 12px;
+  }
+  
+  .dropdown-content {
+    top: 100px;
+  }
+  
+  .floating-buttons {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .floating-button {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Small mobile devices */
+  .header-content h1 {
+    font-size: 24px;
+  }
+  
+  .navbar-lower a, .dropdown-trigger {
+    font-size: 11px;
+    padding: 0 5px;
+  }
+  
+  .contact-info span {
+    font-size: 11px;
+    margin-right: 10px;
+  }
+  
+  .back-to-top {
+    width: 12vw;
+  }
+}
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .card-buttons {
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column;
+  }
+  
+  .card-buttons button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  .navbar-marker {
+    display: none; /* Hide marker on mobile */
+  }
+  
+  .dropdown-content {
+    position: static;
+    display: none;
+    width: 100%;
+    box-shadow: none;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: none; /* Disable hover on mobile */
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .triangle {
+    display: none;
+  }
+}
+
+  </style>
+  <!-- Font Awesome for icons -->
+   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar Container -->
+<div class="navbar-container">
+  <!-- Upper Navbar for Sharing Logos -->
+  <div class="navbar-upper">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+  </div>
+
+  <!-- Divider with Marker -->
+  <div class="navbar-divider">
+    <div class="navbar-marker" id="marker"></div>
+  </div>
+
+  <!-- Lower Navbar (Existing Navigation) -->
+  <div class="navbar-lower">
+    <div class="nav-links">
+      <a href="#" class="nav-link" onclick="moveMarker(this)">HOME</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
+      <div class="dropdown">
+        <span style="padding:33px" class="dropdown-trigger nav-link" onclick="moveMarker(this)">CATEGORIES ▼</span>
+        <div class="dropdown-content">
+          <div class="triangle"></div>
+          <a href="#">LUXURY</a>
+          <a href="#">SPORTS</a>
+          <a href="#">SUV</a>
+          <a href="#">CONVERTIBLE</a>
+        </div>
+      </div>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">FAQ</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">CONTACT</a>
+    </div>
+    
+    <div  class="contact-info">
+      <div class="lang-dropdown" id="langDropdown">
+        <a href="#" class="nav-link" onclick="toggleLanguageDropdown(event)">ENGLISH ▼</a>
+        <div class="lang-dropdown-content">
+          <a href="#">🇸🇦 العربية</a>
+          <a href="#">🇬🇧 ENGLISH</a>
+        </div>
+      </div>
+      
+      <span style="border:1px rgba(255, 255, 255, 0.5) solid;padding:8px; margin-left:3px"><i class="fas fa-phone"></i> +971 50 123 4567</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header Section -->
+<div class="header-section">
+  <div class="header-content">
+    <h1>ALL CARS</h1>
+    <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+
+    <p>Home / All Cars</p>
+  </div>
+  <!-- Triangles for Cut Effect -->
+  <div class="triangle-left"></div>
+  <div class="triangle-right"></div>
+</div>
+
+<!-- Description Section -->
+<div class="description">
+  <h2>Luxury Car Rental Without Deposit: The Future of Car Rentals</h2>
+  <p>
+    Premium Crystal Car Rentals provides a unique traveler and resident experience having the option to hire a luxury car rental without deposit. 
+    We assure you service as it should be offered. It never requires a deposit. When in Dubai for business, a holiday, or just a celebratory event, 
+    there is a need for a high-class car rental service. We have well-kept cars from Lamborghini's to Bentley's that you will always desire to drive. 
+    At Premium Crystal Car Rentals, we strive to keep it as simple as possible and how you would expect it to be. We understand your preferences and standards. 
+    Say goodbye to the restraints of paying any deposit before entering into a rental agreement with us.
+  </p>
+</div>
+
+<!-- Card Grid -->
+<div class="card-container" id="cardContainer">
+  <!-- Cards will be rendered by JavaScript -->
+</div>
+
+<!-- New Section with Car Image -->
+<div class="car-rental-section">
+  <h2>Sports Car Rental No Deposit - Designed For You</h2>
+  <div class="divider">
+    <hr class="elementor-divider-separator">
+  </div>
+  <p>
+    At Premium Crystal Car Rental, we have an aggressive assortment of vehicles that aspire to stand in line with the ever-diversifying agenda of any event or personal desire. All things being equal, if one enjoys the adrenaline rush of Sports Car Rental Dubai cars, associated with sports car rental no deposit, or likes luxury sedans or the convenience of a high-end SUV, the collection was holistically put together to benefit the customer now. With our Car rental Dubai no deposit, that does not require deposits, you can have fun and make the most out of these supercars without worrying about your finances. All are maintained for your convenience and are sure to provide you with the best-in-class experience. For a business trip, a quick weekend trip, or simply to relish the beauty that is Dubai, our luxury cars for rent with no deposit are indeed hassle-free and comfort-oriented. Let Premium Crystal Car Rental match you with the right car to make your travel experience as wonderful as it can be.
+  </p>
+  <img src="https://images.unsplash.com/photo-1552519507-dea7a1b5e6d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Sports Car" class="car-image">
+</div>
+
+<div class="car-rental-section">
+  <h2>Effortless Luxury: Car Rental Dubai No Deposit</h2>
+  <div class="divider">
+    <hr class="elementor-divider-separator">
+  </div>
+  <p>
+    Experience the best Luxury Car Rental Dubai can offer through the innovative Dubai no-deposit car rental from Premium Crystal Car Rental. We guarantee customers a smooth rental process by eliminating heavy deposits. Enter an environment where elegance meets functionality with the help of a different selection of premium vehicles certified to enhance your traveling experience. Whether one is examining the renowned landmarks of Dubai or presenting a noteworthy impression on a high-profile occasion, our fleet ensures a superior driving experience including our sports car rental no deposit. Emphasizing transparency, adaptability, and exceptional service, Premium Crystal Car Rental provides an unmatched Car rental Dubai no deposit solution for discerning clientele who seek only the finest. Revel in the effortlessness.
+  </p>
+</div>
+
+<div class="car-rental-section">
+  <h2>Consumer-friendly Car Rental Plans</h2>
+  <div class="divider">
+    <hr class="elementor-divider-separator">
+  </div>
+  <p>
+    [Add your content here for consumer-friendly car rental plans if desired.]
+  </p>
+</div>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-button whatsapp" onclick="window.open('https://wa.me/1234567890')">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+  <button class="floating-button call" onclick="window.location.href='tel:+1234567890'">
+    <i class="fas fa-phone"></i>
+  </button>
+</div>
+
+
+
+<!-- FAQ Section -->
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <p class="intro">
+    At Premium Crystal, we are driven by our desire to ensure customer satisfaction, and all our efforts are focused on the same. 
+    The following segment aims to answer the frequently asked questions about VIP and Premium Car Rental in Dubai. 
+    In this section, we will try to provide clarity and insight into various aspects of our services and guide you on how to rent a car in Dubai. 
+    From pricing details to the booking process and information on our diverse vehicle collections, we have everything covered here. 
+    Explore this FAQ guide to gain an overall understanding of our services.
+  </p>
+  
+  
+  
+  <div class="faq-container">
+   
+  </div>
+</div>
+
+<!-- Office Location Section (acting as footer) -->
+<div class="office-location">
+  <div class="office-logo">
+    <img src="https://via.placeholder.com/150x80?text=PREMIUM+CRYSTAL" alt="Premium Crystal Logo">
+  </div>
+
+    <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+  
+  <div class="contact-container">
+    <div class="divider">
+      <hr class="elementor-divider-separator">
+    </div>
+    <h2>OFFICE LOCATION</h2>
+    
+    <div class="address">
+      <p><i class="fas fa-map-marker-alt"></i> Zajkl Building - Abu Hali Road, Dubai, United Arab Emirates</p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3><i class="fas fa-phone"></i> PHONE</h3>
+        <p>+971 566668807</p>
+      </div>
+      
+      <div class="contact-item">
+        <h3><i class="fas fa-envelope"></i> EMAIL</h3>
+        <p>contact@premiumcrystal.ae</p>
+      </div>
+      
+      <div class="contact-item">
+        <h3><i class="fas fa-clock"></i> HOURS</h3>
+        <p>All week days 24/7</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <!-- Four corner decorative divs -->
+  <div class="corner-decoration topleft">
+    <img src="l.svg"/>
+  </div>
+  <div class="corner-decoration topright">
+    
+    <img src="r.svg"/>
+  </div>
+  <div class="corner-decoration bottomleft"></div>
+  <div class="corner-decoration bottomright"></div>
+  
+  <!-- Back to top button -->
+   <div class="back-to-top"><div></div></div>
+  <a href="#" class="back-to-top-2">TOP</a>
+
+</div>
+
+
+
+<!-- Copyright Section -->
+<div class="copyright">
+  <p>&copy; 2023 Premium Crystal Car Rentals. All Rights Reserved.</p>
+</div>
+
+
+
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-button whatsapp" onclick="window.open('https://wa.me/1234567890')">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+  <button class="floating-button call" onclick="window.location.href='tel:+1234567890'">
+    <i class="fas fa-phone"></i>
+  </button>
+</div>
+
+
+
+<script>
+
+    const faqData = [
+  {
+    question: "WHAT ARE THE REQUIRED DOCUMENTS FOR UAE RESIDENTS?",
+    answer: "UAE residents wanting to book a vehicle from our VIP and Luxury car rental in Dubai need to share copies of their valid UAE driving license and Emirates ID."
+  },
+  {
+    question: "WHAT ARE THE REQUIRED DOCUMENTS FOR TOURISTS VISITING UAE?",
+    answer: "Tourists visiting UAE need to provide their passport copy, visa copy, and valid international driving license or driving license from their home country."
+  },
+  {
+    question: "CAN AN INTERNATIONAL DRIVER'S LICENSE WORK IN DUBAI?",
+    answer: "Yes, an international driver's license is valid in Dubai along with your original driving license from your home country. The license must be valid for the duration of your stay."
+  },
+  {
+    question: "WHAT IS THE MINIMUM AGE TO RENT A CAR IN DUBAI?",
+    answer: "The minimum age to rent a car in Dubai is 21 years for most vehicles, but some luxury or high-performance cars may require the driver to be at least 25 years old."
+  },
+  {
+    question: "DO YOU OFFER INSURANCE WITH YOUR RENTALS?",
+    answer: "Yes, all our rentals include comprehensive insurance as per UAE regulations. Additional coverage options are also available for extra protection."
+  },
+  {
+    question: "WHAT IS YOUR CANCELLATION POLICY?",
+    answer: "You can cancel your reservation free of charge up to 24 hours before your scheduled pickup time. Late cancellations may incur a fee."
+  },
+  {
+    question: "WHAT ARE THE REQUIRED DOCUMENTS FOR UAE RESIDENTS?",
+    answer: "UAE residents wanting to book a vehicle from our VIP and Luxury car rental in Dubai need to share copies of their valid UAE driving license and Emirates ID."
+  },
+  {
+    question: "WHAT ARE THE REQUIRED DOCUMENTS FOR TOURISTS VISITING UAE?",
+    answer: "Tourists visiting UAE need to provide their passport copy, visa copy, and valid international driving license or driving license from their home country."
+  },
+  {
+    question: "CAN AN INTERNATIONAL DRIVER'S LICENSE WORK IN DUBAI?",
+    answer: "Yes, an international driver's license is valid in Dubai along with your original driving license from your home country. The license must be valid for the duration of your stay."
+  },
+  {
+    question: "WHAT IS THE MINIMUM AGE TO RENT A CAR IN DUBAI?",
+    answer: "The minimum age to rent a car in Dubai is 21 years for most vehicles, but some luxury or high-performance cars may require the driver to be at least 25 years old."
+  },
+  {
+    question: "DO YOU OFFER INSURANCE WITH YOUR RENTALS?",
+    answer: "Yes, all our rentals include comprehensive insurance as per UAE regulations. Additional coverage options are also available for extra protection."
+  },
+  {
+    question: "WHAT IS YOUR CANCELLATION POLICY?",
+    answer: "You can cancel your reservation free of charge up to 24 hours before your scheduled pickup time. Late cancellations may incur a fee."
+  }
+];
+
+
+function renderFAQs() {
+  const faqContainer = document.querySelector('.faq-container');
+  
+  // Clear existing content (if any)
+  faqContainer.innerHTML = '';
+  
+  // Create and append FAQ items
+  faqData.forEach(faq => {
+    const faqItem = document.createElement('div');
+    faqItem.className = 'faq-item';
+    
+    faqItem.innerHTML = `
+      <div class="faq-question">${faq.question}</div>
+      <div class="faq-answer">${faq.answer}</div>
+    `;
+    
+    faqContainer.appendChild(faqItem);
+  });
+  
+  // Add click event listeners to all questions
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentNode;
+      item.classList.toggle('active');
+    });
+  });
+}
+document.addEventListener('DOMContentLoaded', function() {
+  renderFAQs();
+  // Your other initialization code...
+});
+
+
+
+
+
+
+
+
+// Make cards clickable on mobile
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.innerWidth <= 768) {
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function() {
+        const buttons = this.querySelector('.card-buttons');
+        buttons.style.display = buttons.style.display === 'flex' ? 'none' : 'flex';
+      });
+    });
+  }
+});
+
+
+
+  // Car data array
+  const cars = [
+    {
+      image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 1700',
+      title: 'Chevrolet Corvette C8 Stingray 2025',
+      year: '2024',
+      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 600',
+      title: 'BMW 325i M Sport 2025',
+      year: '2025',
+      features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 25555666500',
+      title: 'Mercedes Benz AMG G63 2024',
+      year: '2024',
+      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 1700',
+      title: 'Chevrolet Corvette C8 Stingray 2025',
+      year: '2024',
+      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 600',
+      title: 'BMW 325i M Sport 2025',
+      year: '2025',
+      features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 2500',
+      title: 'Mercedes Benz AMG G63 2024',
+      year: '2024',
+      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      price: 'AED 2500',
+      title: 'Mercedes Benz AMG G63 2024',
+      year: '2024',
+      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+    }
+  ];
+
+  // Function to render cards
+  function renderCards() {
+  const cardContainer = document.getElementById('cardContainer');
+  cardContainer.innerHTML = '';
+  
+  // SVG icons for special features
+  const featureIcons = {
+    'NO DEPOSIT': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>`,
+    'INSURANCE': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm1.65-2.65L11.5 12.2V9h1v2.79l1.85 1.85-.7.71z"/></svg>`,
+    'USDT OK': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 14.09v.58c0 .73-.59 1.33-1.33 1.33h-.01c-.74 0-1.33-.6-1.33-1.33v-.6c-2.46-.42-3.03-1.51-3.18-2.41l1.64-.01c.11.47.36 1.14 1.54 1.54v-4.61c-2.34-.7-2.57-2.12-2.69-3.17l1.64-.01c.08.71.29 1.92 1.05 2.28v-.72c0-.73.59-1.33 1.33-1.33h.01c.74 0 1.33.6 1.33 1.33v.7c1.19.39 1.45 1.1 1.49 1.56l-1.63.01c-.03-.26-.13-1.1-.86-1.5v4.65c2.4.71 2.69 1.9 2.75 3.22l-1.64.01c-.04-.89-.31-1.82-1.5-2.25z"/></svg>`,
+    // Default calendar icon for any year
+    'YEAR': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>`
+  };
+
+  cars.forEach(car => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    
+    card.innerHTML = `
+      <img src="${car.image}">
+      <div class="price">${car.price}</div>
+      <div class="whats">🔥Deals on WhatsApp🔥</div>
+      <div class="card-content">
+        <h3>${car.title}</h3>
+        <div class="card-icons">
+          ${car.features.map(feature => {
+            // Check if feature is a year (4-digit number)
+            const isYear = /^\d{4}$/.test(feature);
+            const icon = isYear ? featureIcons['YEAR'] : (featureIcons[feature] || '');
+            
+            return `
+              <div class="feature-item">
+                <div class="feature-icon">${icon}</div>
+                <div class="feature-text">${feature}</div>
+              </div>
+            `;
+          }).join('<div class="feature-separator">|</div>')}
+        </div>
+      </div>
+      <div class="card-buttons">
+        <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+<button class="call"><i class="fas fa-phone"></i> Call Us</button>
+      </div>
+    `;
+    
+    cardContainer.appendChild(card);
+  });
+}
+  // Initialize marker position on home link
+  function initializeMarker() {
+    const homeLink = document.querySelector('.nav-link');
+    if (homeLink) {
+      moveMarker(homeLink);
+    }
+  }
+
+  function moveMarker(element) {
+    const marker = document.getElementById('marker');
+    const rect = element.getBoundingClientRect();
+    const navbar = document.querySelector('.navbar-lower');
+    const navbarRect = navbar.getBoundingClientRect();
+    
+    const left = rect.left - navbarRect.left;
+    marker.style.width = rect.width + 'px';
+    marker.style.left = left + 'px';
+  }
+
+  // Toggle language dropdown
+  function toggleLanguageDropdown(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    const dropdown = document.getElementById('langDropdown');
+    dropdown.classList.toggle('active');
+    
+    // Don't move marker for language dropdown
+    return false;
+  }
+
+  // Close language dropdown when clicking elsewhere
+  document.addEventListener('click', function(e) {
+    const langDropdown = document.getElementById('langDropdown');
+    if (!langDropdown.contains(e.target)) {
+      langDropdown.classList.remove('active');
+    }
+  });
+
+  // Reset marker when clicking another link
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Skip if it's the language dropdown link
+      if (!this.closest('.lang-dropdown')) {
+        moveMarker(this);
+      }
+    });
+  });
+
+  // Handle navbar background and upper navbar visibility on scroll
+  window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar-container');
+    const navbarUpper = document.querySelector('.navbar-upper');
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 0) {
+      navbar.style.background = 'linear-gradient(to bottom, rgb(0, 0, 0), rgba(51, 51, 51, 0))';
+      navbarUpper.style.opacity = '0';
+      navbarUpper.style.height = '0';
+    } else {
+      navbar.style.background = 'transparent';
+      navbarUpper.style.opacity = '1';
+      navbarUpper.style.height = 'auto';
+    }
+  });
+
+  // Initialize the page
+  document.addEventListener('DOMContentLoaded', function() {
+    renderCards();
+    initializeMarker();
+  });
+
+      // FAQ functionality - modified to allow multiple open items
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentNode;
+      item.classList.toggle('active');
+    });
+  });
+// Smooth scroll to top functionality
+  document.querySelector('.back-to-top-2').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+</body>
+</html>
