@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Car Rental Sample</title>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="All_cars.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+.header-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./PICS/gc.png') no-repeat center center;
+    background-size: cover;
+    height: 646px;
+    position: relative;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center; /* Fixed here */
+    justify-content: center;
+    overflow: hidden;
+    padding: 0px 0px;
+}
+
+.header-content {
+    text-align: center;
+    color: white;
+}
+.header-content {
+    transform: translateY(-40%); /* moves it up slightly */
+}
+
+.header-content h1 {
+  font-size: 60px;
+  font-weight: 900;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+  margin-bottom: 10px;
+}
+
+.header-content p {
+  font-size: 20px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  margin-bottom: 30px;
+}
+
+.search-box {
+  display: inline-flex;
+  background: white;
+  overflow: hidden;
+}
+
+.search-box input {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  width: 300px;
+  font-size: 16px;
+}
+
+.search-box button {
+  background: white;
+  border: none;
+  cursor: pointer;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #333;
+}
+.description h2{
+       color: #000000;
+    font-family: "Ubuntu", Sans-serif;
+    font-size: 28px;
+ 
+    font-weight: 500;
+    font-family:bold;
+    font-weight:bold;
+    line-height: 72px;}
+.description p{
+      font-size: 15px;
+    font-weight: 300;}
+
+    .categories-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-item:center;
+    justify-content:center;
+  }
+
+  .categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center all items in each row */
+    gap: 45px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.category-item {
+    width: 250px; /* Set fixed width so they align nicely */
+    height: 250px;
+    background: #f5f5f5;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow:visible;
+}
+
+.category-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.category-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0px 0;
+    color: #000000;
+    font-weight: bold;   
+     font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+}
+
+.category-item:hover img {
+    transform: scale(1.1); /* Zoom in by 10% on hover */
+}
+
+
+.carousel-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  position: relative;
+  
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s ease;
+}
+
+.carousel-slide {
+  flex: 2 ;
+  min-width: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  max-width: 100px; /* Adjusted for 6 logos to fit */
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(30%);
+  transition: all 0.3s ease;
+}
+
+.carousel-slide:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  width: 60px;
+  height: 60px;
+  border:none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  background:#f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.prev:hover, .next:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+  left: -50px;
+}
+
+.next {
+  right: -50px;
+}
+
+@media (max-width: 1200px) {
+  .carousel-slide {
+    flex: 0 0 calc(100% / 4); /* Adjust to 4 on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 calc(100% / 3); /* Adjust to 3 on smaller screens */
+  }
+  .prev, .next {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide {
+    flex: 0 0 calc(100% / 2); /* Adjust to 2 on very small screens */
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar Container -->
+<div class="navbar-container">
+  <!-- Upper Navbar for Sharing Logos -->
+  <div class="navbar-upper">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+  </div>
+
+  <!-- Divider with Marker -->
+  <div class="navbar-divider">
+    <div class="navbar-marker" id="marker"></div>
+  </div>
+
+  <!-- Lower Navbar (Existing Navigation) -->
+  <div class="navbar-lower">
+    <div class="nav-links">
+      <a href="#" class="nav-link" onclick="moveMarker(this)">HOME</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
+    <div class="dropdown">
+  <span style="padding:33px" class="dropdown-trigger nav-link" onclick="moveMarker(this)">
+    CATEGORIES <i class="fas fa-chevron-down"></i>
+  </span>
+  <div class="dropdown-content">
+    <div class="triangle"></div>
+    <a href="#">LUXURY</a>
+    <a href="#">SPORTS</a>
+    <a href="#">SUV</a>
+    <a href="#">CONVERTIBLE</a>
+  </div>
+</div>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">FAQ</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">CONTACT</a>
+    </div>
+    
+    <div  class="contact-info">
+      <div class="lang-dropdown" id="langDropdown">
+        <a href="#" class="nav-link" onclick="toggleLanguageDropdown(event)">ENGLISH <i class="fas fa-chevron-down"></i></a>
+        <div class="lang-dropdown-content">
+          <a href="#">🇸🇦 العربية</a>
+          <a href="#">🇬🇧 ENGLISH</a>
+        </div>
+      </div>
+      
+      <span style="border:1px rgba(255, 255, 255, 0.5) solid;padding:8px; margin-left:3px"><i class="fas fa-phone"></i> +971 50 123 4567</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header Section -->
+<div class="header-section">
+  <div class="header-content">
+  <h1>Premium Crystal Car Rental</h1>
+  <p>Best Car Rental Company in Dubai</p>
+
+  <div class="search-box">
+    <input type="text" placeholder="Find your dream car...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+</div>
+
+  <!-- Triangles for Cut Effect -->
+  <div class="triangle-left"></div>
+  <div class="triangle-right"></div>
+</div>
+
+<!-- Description Section -->
+<div class="description">
+  <h2>Luxury Car Rental Without Deposit: The Future of Car Rentals</h2>
+   <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+  <p>
+   At Premium Crystal Car Rental, one of the Best Car rental company in Dubai, we make sure that you should be provided with convenience and luxury to feel like at home. You can opt for any of our well-maintained vehicles from classic sedans to sports cars- we have it all in our garages. Our vehicles are suitable for all occasions and personalized to match everyone’s unique taste.</p>
+  <p> Our excellent rental cars with Car rental Dubai No Deposit option will let you experience, enjoy and embrace the beauty of wonderful cityscapes along with thrilling desert adventures with full comfort and style throughout your journey. Transparent price, impeccable customer service, and an efficient booking procedure are dedicated to reflecting our indispensable commitment to meeting the cherished values of our precious customers.</p>
+</div>
+
+<!-- Categories Section -->
+<div class="categories-container">
+  <div class="categories-grid">
+    <!-- First Row - 4 items -->
+    <div class="category-item">
+      <img src="222.png" alt="LUXURY">
+      <div class="category-label">LUXURY</div>
+    </div>
+    <div class="category-item">
+      <img src="555.png" alt="SPORTS">
+      <div class="category-label">SPORTS</div>
+    </div>
+    <div class="category-item">
+      <img src="111.png" alt="SUV">
+      <div class="category-label">SUV</div>
+    </div>
+    <div class="category-item">
+      <img src="333.png" alt="CONVERTIBLE">
+      <div class="category-label">CONVERTIBLE</div>
+    </div>
+    
+    <!-- Second Row - 2 centered items -->
+    <div class="category-item">
+      <img src="./PICS/image5.png" alt="CAR WITH DRIVER">
+      <div class="category-label">CAR WITH DRIVER</div>
+    </div>
+    <div class="category-item">
+      <img src="./PICS/image6.png" alt="YACHT">
+      <div class="category-label">YACHT</div>
+    </div>
+  </div>
+</div>
+
+  <div class="description">
+    <h2>Rent A Car From Top Brands</h2>
+    <div class="line-container">
+      <div class="line1"></div>
+      <div class="line2"></div>
+    </div>
+    
+   
+  </div>
+ <div class="carousel-container">
+        <button class="prev">
+
+  <i class="fas fa-angle-left"></i>
+</button>
+
+      <div class="carousel">
+        <div class="carousel-track">
+          <div class="carousel-slide"><img src="./PICS/car_brand/Ford.png" alt="Ford"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/ferrari.png" alt="Ferrari"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/roles_roys.png" alt="Rolls-Royce"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/Lamborghini.png" alt="Lamborghini"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/porsche.png" alt="Porsche"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/Land Rover.png" alt="Land Rover"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/Audi(1).png" alt="Audi"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/bmw.png" alt="BMW"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/Mercedes Benz.png" alt="Mercedes-Benz"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/Toyota.png" alt="Toyota"></div>
+          <div class="carousel-slide"><img src="./PICS/car_brand/Chevrolet.png" alt="Chevrolet"></div>
+        </div>
+      </div>
+<button class="next">
+<i class="fas fa-angle-right"></i>
+</button>
+    </div>
+
+<!-- Card Grid -->
+<div class="card-container" id="cardContainer">
+  <!-- Cards will be rendered by JavaScript -->
+</div>
+
+<!-- New Section with Car Image -->
+<div class="car-rental-section">
+  <h2>Sports Car Rental No Deposit - Designed For You</h2>
+  <div class="divider">
+    <hr class="elementor-divider-separator">
+  </div>
+  <p>
+    At Premium Crystal Car Rental, we have an aggressive assortment of vehicles that aspire to stand in line with the ever-diversifying agenda of any event or personal desire. All things being equal, if one enjoys the adrenaline rush of Sports Car Rental Dubai cars, associated with sports car rental no deposit, or likes luxury sedans or the convenience of a high-end SUV, the collection was holistically put together to benefit the customer now. With our Car rental Dubai no deposit, that does not require deposits, you can have fun and make the most out of these supercars without worrying about your finances. All are maintained for your convenience and are sure to provide you with the best-in-class experience. For a business trip, a quick weekend trip, or simply to relish the beauty that is Dubai, our luxury cars for rent with no deposit are indeed hassle-free and comfort-oriented. Let Premium Crystal Car Rental match you with the right car to make your travel experience as wonderful as it can be.
+  </p>
+  <img src="https://images.unsplash.com/photo-1552519507-dea7a1b5e6d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Sports Car" class="car-image">
+</div>
+
+<div class="car-rental-section">
+  <h2>Effortless Luxury: Car Rental Dubai No Deposit</h2>
+  <div class="divider">
+    <hr class="elementor-divider-separator">
+  </div>
+  <p>
+    Experience the best Luxury Car Rental Dubai can offer through the innovative Dubai no-deposit car rental from Premium Crystal Car Rental. We guarantee customers a smooth rental process by eliminating heavy deposits. Enter an environment where elegance meets functionality with the help of a different selection of premium vehicles certified to enhance your traveling experience. Whether one is examining the renowned landmarks of Dubai or presenting a noteworthy impression on a high-profile occasion, our fleet ensures a superior driving experience including our sports car rental no deposit. Emphasizing transparency, adaptability, and exceptional service, Premium Crystal Car Rental provides an unmatched Car rental Dubai no deposit solution for discerning clientele who seek only the finest. Revel in the effortlessness.
+  </p>
+</div>
+
+<div class="car-rental-section">
+  <h2>Consumer-friendly Car Rental Plans</h2>
+  <div class="divider">
+    <hr class="elementor-divider-separator">
+  </div>
+  <p>
+    [Add your content here for consumer-friendly car rental plans if desired.]
+  </p>
+</div>
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-button whatsapp" onclick="window.open('https://wa.me/1234567890')">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+  <button class="floating-button call" onclick="window.location.href='tel:+1234567890'">
+    <i class="fas fa-phone"></i>
+  </button>
+</div>
+
+
+
+<!-- FAQ Section -->
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <p class="intro">
+    At Premium Crystal, we are driven by our desire to ensure customer satisfaction, and all our efforts are focused on the same. 
+    The following segment aims to answer the frequently asked questions about VIP and Premium Car Rental in Dubai. 
+    In this section, we will try to provide clarity and insight into various aspects of our services and guide you on how to rent a car in Dubai. 
+    From pricing details to the booking process and information on our diverse vehicle collections, we have everything covered here. 
+    Explore this FAQ guide to gain an overall understanding of our services.
+  </p>
+  
+  
+  
+  <div class="faq-container">
+   
+  </div>
+</div>
+
+<!-- Office Location Section (acting as footer) -->
+<div class="office-location">
+  <div class="office-logo">
+    <img src="https://via.placeholder.com/150x80?text=PREMIUM+CRYSTAL" alt="Premium Crystal Logo">
+  </div>
+
+    <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+  
+  <div class="contact-container">
+    <div class="divider">
+      <hr class="elementor-divider-separator">
+    </div>
+    <h2>OFFICE LOCATION</h2>
+    
+    <div class="address">
+      <p><i class="fas fa-map-marker-alt"></i> Zajkl Building - Abu Hali Road, Dubai, United Arab Emirates</p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3><i class="fas fa-phone"></i> PHONE</h3>
+        <p>+971 566668807</p>
+      </div>
+      
+      <div class="contact-item">
+        <h3><i class="fas fa-envelope"></i> EMAIL</h3>
+        <p>contact@premiumcrystal.ae</p>
+      </div>
+      
+      <div class="contact-item">
+        <h3><i class="fas fa-clock"></i> HOURS</h3>
+        <p>All week days 24/7</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <!-- Four corner decorative divs -->
+  <div class="corner-decoration topleft">
+    <img src="./SVG/l.svg"/>
+  </div>
+  <div class="corner-decoration topright">
+    
+    <img src="./SVG/r.svg"/>
+  </div>
+  <div class="corner-decoration bottomleft"></div>
+  <div class="corner-decoration bottomright"></div>
+  
+  <!-- Back to top button -->
+   <div class="back-to-top"><div></div></div>
+  <a href="#" class="back-to-top-2">TOP</a>
+
+</div>
+
+
+
+<!-- Copyright Section -->
+<div class="copyright">
+  <p>&copy; 2023 Premium Crystal Car Rentals. All Rights Reserved.</p>
+</div>
+
+
+
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-button whatsapp" onclick="window.open('https://wa.me/1234567890')">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+  <button class="floating-button call" onclick="window.location.href='tel:+1234567890'">
+    <i class="fas fa-phone"></i>
+  </button>
+</div>
+
+
+
+ <script src="All_cars.js"></script>
+ <script src="Home.js"></script>
+
+ 
+</body>
+</html>
