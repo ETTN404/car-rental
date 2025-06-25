@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lamborghini Urus Blue 2025 Rental</title>
+  <style>
+    .AEparent {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+    .AEcontainer {
+      max-width: 1200px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .AEtitle { margin-top: 0; }
+    .AEprice {
+      background: #e53935;
+      color: white;
+      display: inline-block;
+      padding: 10px 20px;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 10% 100%, 0 80%);
+      font-size: 20px;
+      float: right;
+    }
+    .AEmain-section {
+      display: flex;
+      gap: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+      flex-wrap: wrap;
+    }
+    .AEleft-side {
+      flex: 3;
+      border-right: 1px solid #ddd;
+      padding-right: 20px;
+      min-width: 300px;
+    }
+    .AErigth-side {
+      flex: 1;
+      padding-left: 20px;
+      min-width: 250px;
+    }
+    .AEimage-gallery {
+      position: relative;
+      text-align: center;
+    }
+    .AEimage-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: opacity 0.5s;
+      cursor: pointer;
+    }
+    .AEimage-gallery button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      display: none;
+    }
+    .AEimage-gallery:hover button {
+      display: block;
+    }
+    #AEprev { left: 10px; }
+    #AEnext { right: 10px; }
+    .AEthumbnails {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+    .AEthumb {
+      width: 80px;
+      cursor: pointer;
+      opacity: 0.7;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+    .AEthumb:hover,
+    .AEthumb.AEselected {
+      opacity: 1;
+      box-shadow: 0 0 10px #000;
+    }
+    .AEspecifications, .AErrelated-cars {
+      margin-top: 20px;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+    .AErrelated-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .AErrelated-item img {
+      width: 80px;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    .AEtable {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .AEtable, .AEth, .AEtb {
+      border: 1px solid #ddd;
+    }
+    .AEth, .AEtb {
+      padding: 8px;
+      text-align: left;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 8px;
+    }
+    .close-modal {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: white;
+      border: none;
+      font-size: 18px;
+      padding: 5px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    @media(max-width:768px){
+      .AEmain-section { flex-direction: column; }
+      .AEleft-side, .AErigth-side { border: none; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="AEparent">
+    <div class="AEcontainer">
+      <h1 class="AEtitle">Lamborghini Urus Blue 2025</h1>
+      <div class="AEprice">AED3,600</div>
+
+      <div class="AEmain-section">
+        <div class="AEleft-side">
+          <div class="AEimage-gallery">
+            <button id="AEprev">❮</button>
+            <img id="AEmain-image" src="" alt="Lamborghini Urus">
+            <button id="AEnext">❯</button>
+          </div>
+          <div class="AEthumbnails" id="AEthumbnails"></div>
+        </div>
+
+        <div class="AErigth-side">
+          <div class="AEspecifications">
+            <h3>Specifications |</h3>
+            <p><strong>Make:</strong> SUV</p>
+            <p><strong>Made Year:</strong> 2025</p>
+          </div>
+          <div class="AErrelated-cars">
+            <h3>Related Cars |</h3>
+            <div id="AErrelated"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="AEvehicle-description">
+        <h3>Vehicle Description |</h3>
+        <table class="AEtable">
+          <tr><th class="AEth">Type</th><th class="AEth">Price</th></tr>
+          <tr><td class="AEtb">Daily</td><td class="AEtb">AED 3600</td></tr>
+        </table>
+        <p>
+          Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="AEimageModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <img id="AEpopupImage" src="" alt="Popup">
+    </div>
+  </div>
+
+  <script>
+    const AEimages = ['PICS/R R.png','PICS/new black Rolls Royce Ghost.jpg','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png'];
+    const AErelatedCars = [
+      {img: 'related1.jpg', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'},
+      {img: 'related2.jpg', name: 'Ferrari F8 Tributo 2022', price: 'AED4,000'},
+      {img: 'related1.jpg', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'}
+    ];
+
+    const AEmainImage = document.getElementById('AEmain-image');
+    const AEthumbnailsDiv = document.getElementById('AEthumbnails');
+    const AErrelatedDiv = document.getElementById('AErrelated');
+    const AEprev = document.getElementById('AEprev');
+    const AEnext = document.getElementById('AEnext');
+    const AEpopupImage = document.getElementById('AEpopupImage');
+    const AEimageModal = document.getElementById('AEimageModal');
+    let AEindex = 0;
+
+    function AErenderThumbnails() {
+      AEthumbnailsDiv.innerHTML = '';
+      AEimages.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.className = 'AEthumb' + (i === AEindex ? ' AEselected' : '');
+        img.addEventListener('click', () => AEsetImage(i));
+        AEthumbnailsDiv.appendChild(img);
+      });
+    }
+
+    function AErenderRelatedCars() {
+      AErelatedCars.forEach(car => {
+        const item = document.createElement('div');
+        item.className = 'AErrelated-item';
+        item.innerHTML = `<img src="${car.img}" alt="${car.name}"><div><p>${car.name}</p><span>${car.price}</span></div>`;
+        AErrelatedDiv.appendChild(item);
+      });
+    }
+
+    function AEsetImage(i) {
+      AEindex = i;
+      AEmainImage.style.opacity = 0;
+      setTimeout(() => {
+        AEmainImage.src = AEimages[AEindex];
+        AEmainImage.style.opacity = 1;
+        AErenderThumbnails();
+        AEprev.style.display = AEindex === 0 ? 'none' : 'block';
+        AEnext.style.display = AEindex === AEimages.length - 1 ? 'none' : 'block';
+      }, 300);
+    }
+
+    function openModal() {
+      AEpopupImage.src = AEimages[AEindex];
+      AEimageModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      AEimageModal.style.display = 'none';
+    }
+
+    AEmainImage.addEventListener('click', openModal);
+    AEprev.addEventListener('click', () => {
+      if(AEindex > 0) AEsetImage(AEindex - 1);
+    });
+    AEnext.addEventListener('click', () => {
+      if(AEindex < AEimages.length - 1) AEsetImage(AEindex + 1);
+    });
+
+    AErenderThumbnails();
+    AErenderRelatedCars();
+    AEsetImage(0);
+  </script>
+</body>
+</html>
