@@ -166,6 +166,66 @@
     font-weight: 600;
         color:green;
     }
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 5px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.modal-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  font-size: 24px;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.modal-prev { left: 20px; }
+.modal-next { right: 20px; }
   </style>
 </head>
 <body>
@@ -192,7 +252,7 @@
       <a href="#" class="nav-link" onclick="moveMarker(this)">HOME</a>
       <a href="#" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
       <div class="dropdown">
-  <span style="padding:33px 0" class="dropdown-trigger nav-link" onclick="moveMarker(this)">
+  <span style="padding:33px 0; " class="dropdown-trigger nav-link" onclick="moveMarker(this)">
     CATEGORIES <i class="fas fa-chevron-down"></i>
   </span>
   <div class="dropdown-content">
@@ -294,6 +354,15 @@
       </div>
 
 
+    </div>
+  </div>
+    </div>
+     <div class="modal" id="AEimageModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <button class="modal-button modal-prev" onclick="prevModalImage()">❮</button>
+      <img id="AEpopupImage" src="" alt="Popup">
+      <button class="modal-button modal-next" onclick="nextModalImage()">❯</button>
     </div>
   </div>
 
@@ -443,6 +512,37 @@
       if(AEindex > 0) AEsetImage(AEindex - 1);
     });
 
+    AEnext.addEventListener('click', () => {
+      if(AEindex < AEimages.length - 1) AEsetImage(AEindex + 1);
+    });
+
+    function openModal() {
+      AEpopupImage.src = AEimages[AEindex];
+      AEimageModal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      AEimageModal.style.display = 'none';
+    }
+
+    function prevModalImage() {
+      if (AEindex > 0) {
+        AEsetImage(AEindex - 1);
+        AEpopupImage.src = AEimages[AEindex];
+      }
+    }
+
+    function nextModalImage() {
+      if (AEindex < AEimages.length - 1) {
+        AEsetImage(AEindex + 1);
+        AEpopupImage.src = AEimages[AEindex];
+      }
+    }
+
+    AEmainImage.addEventListener('click', openModal);
+    AEprev.addEventListener('click', () => {
+      if(AEindex > 0) AEsetImage(AEindex - 1);
+    });
     AEnext.addEventListener('click', () => {
       if(AEindex < AEimages.length - 1) AEsetImage(AEindex + 1);
     });
