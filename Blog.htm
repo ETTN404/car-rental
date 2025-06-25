@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lamborghini Urus Blue 2025 Rental</title>
-  <style>
+  <title>BLOG</title>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="All_cars.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <style>
     .PA {
       margin: 0;
       background: #f4f4f4;
@@ -173,7 +176,77 @@
   </style>
 </head>
 <body>
-  <div class="PA">
+
+<!-- Navbar Container -->
+<div class="navbar-container">
+  <!-- Upper Navbar for Sharing Logos -->
+  <div class="navbar-upper">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Location"><i class="fas fa-map-marker-alt"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="#" aria-label="Snapchat"><i class="fab fa-snapchat-ghost"></i></a>
+  </div>
+
+  <!-- Divider with Marker -->
+  <div class="navbar-divider">
+    <div class="navbar-marker" id="marker"></div>
+  </div>
+
+  <!-- Lower Navbar (Existing Navigation) -->
+  <div class="navbar-lower">
+    <div class="nav-links">
+      <a href="#" class="nav-link" onclick="moveMarker(this)">HOME</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
+      <div class="dropdown">
+  <span style="padding:33px 0; " class="dropdown-trigger nav-link" onclick="moveMarker(this)">
+    CATEGORIES <i class="fas fa-chevron-down"></i>
+  </span>
+  <div class="dropdown-content">
+    <div class="triangle"></div>
+    <a href="#">LUXURY</a>
+    <a href="#">SPORTS</a>
+    <a href="#">SUV</a>
+    <a href="#">CONVERTIBLE</a>
+  </div>
+</div>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">FAQ</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">CONTACT</a>
+    </div>
+    
+    <div  class="contact-info">
+      <div class="lang-dropdown" id="langDropdown">
+        <a href="#" class="nav-link" onclick="toggleLanguageDropdown(event)">ENGLISH <i class="fas fa-chevron-down"></i></a>
+        <div class="lang-dropdown-content">
+          <a href="#">🇸🇦 العربية</a>
+          <a href="#">🇬🇧 ENGLISH</a>
+        </div>
+      </div>
+      
+      <span style="border:1px rgba(255, 255, 255, 0.5) solid;padding:8px; margin-left:3px"><i class="fas fa-phone"></i> +971 50 123 4567</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header Section -->
+<div class="header-section">
+  <div class="header-content">
+    <h1>ALL CARS</h1>
+    <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+
+    <p>Home / All Cars</p>
+  </div>
+  <!-- Triangles for Cut Effect -->
+  <div class="triangle-left"></div>
+  <div class="triangle-right"></div>
+</div>
+
+<!-- ____________________________________________________________________________________________ --> 
+
+<div class="PA">
     <div class="AEparent">
       <div class="AEcontainer">
         <div class="AEmain-section">
@@ -237,7 +310,104 @@
       </div>
     </div>
   </div>
-  <script>
+<!-- ____________________________________________________________________________________________ --> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Office Location Section (acting as footer) -->
+<div class="office-location">
+  <div class="office-logo">
+    <img src="https://via.placeholder.com/150x80?text=PREMIUM+CRYSTAL" alt="Premium Crystal Logo">
+  </div>
+
+    <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+  
+  <div class="contact-container">
+    <div class="divider">
+      <hr class="elementor-divider-separator">
+    </div>
+    <h2>OFFICE LOCATION</h2>
+    
+    <div class="address">
+      <p><i class="fas fa-map-marker-alt"></i> Zajkl Building - Abu Hali Road, Dubai, United Arab Emirates</p>
+    </div>
+    
+    <div class="contact-grid">
+      <div class="contact-item">
+        <h3><i class="fas fa-phone"></i> PHONE</h3>
+        <p>+971 566668807</p>
+      </div>
+      
+      <div class="contact-item">
+        <h3><i class="fas fa-envelope"></i> EMAIL</h3>
+        <p>contact@premiumcrystal.ae</p>
+      </div>
+      
+      <div class="contact-item">
+        <h3><i class="fas fa-clock"></i> HOURS</h3>
+        <p>All week days 24/7</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <!-- Four corner decorative divs -->
+  <div class="corner-decoration topleft">
+    <img src="./SVG/l.svg"/>
+  </div>
+  <div class="corner-decoration topright">
+    
+    <img src="./SVG/r.svg"/>
+  </div>
+  <div class="corner-decoration bottomleft"></div>
+  <div class="corner-decoration bottomright"></div>
+  
+  <!-- Back to top button -->
+   <div class="back-to-top"><div></div></div>
+  <a href="#" class="back-to-top-2">TOP</a>
+
+</div>
+
+
+
+<!-- Copyright Section -->
+<div class="copyright">
+  <p>&copy; 2023 Premium Crystal Car Rentals. All Rights Reserved.</p>
+</div>
+
+
+
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-button whatsapp" onclick="window.open('https://wa.me/1234567890')">
+    <i class="fab fa-whatsapp"></i>
+  </button>
+  <button class="floating-button call" onclick="window.location.href='tel:+1234567890'">
+    <i class="fas fa-phone"></i>
+  </button>
+</div>
+
+
+
+ <script src="All_cars.js"></script>
+<script>
     const leftContents = [
       "<h1 class='AEtitle'>Lamborghini Urus Blue 2025</h1><div><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p><p>Experience unmatched performance with the Lamborghini Urus in Dubai.</p></div>",
       "<h1 class='AEtitle'>Ferrari Roma 2024</h1><div><p>Cruise in elegance and speed through the UAE with the Ferrari Roma.</p></div>",
@@ -319,5 +489,6 @@
       });
     });
   </script>
+ 
 </body>
 </html>
