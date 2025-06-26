@@ -172,49 +172,66 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-  fetch('https://car-rental-pi48.onrender.com/api/cars') // Replace with your actual API endpoint
+
+// Select the container where cards will be added
+
+fetch('https://car-rental-pi48.onrender.com/api/cars')
   .then(response => response.json())
-  .then(cars => {
-  cars.forEach(car => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    
-    card.innerHTML = `
-      <img src="${car.images}">
-      <div class="price">${car.daily_rate}</div>
-      <div class="whats">🔥Deals on WhatsApp🔥</div>
-      <div class="card-content">
-        <h3>${car.slug}</h3>
-        <div class="card-icons">
-          ${car.results.map(feature => {
-            // Check if feature is a year (4-digit number)
-            const isYear = /^\d{4}$/.test(feature);
-            const icon = isYear ? featureIcons['YEAR'] : (featureIcons[feature] || '');
-            
-            return `
-              <div class="feature-item">
-                <div class="feature-icon">${icon}</div>
-                <div class="feature-text">${feature}</div>
-              </div>
-            `;
-          }).join('<div class="feature-separator">|</div>')}
+  .then(data => {
+    data.results.forEach(car => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      
+      // Get primary image (first image in array or fallback to image_url)
+      const primaryImage = car.images.length > 0 ? 
+        car.images.find(img => img.is_primary)?.image_url || car.images[0].image_url : 
+        car.image_url;
+      
+      // Prepare features to display
+      const features = [
+        car.year,
+        `${car.seats} Seats`,
+        `${car.luggage_capacity} Luggage`,
+        `${car.doors} Doors`,
+        `${car.mileage_limit} km limit`
+      ];
+      
+      card.innerHTML = `
+        <img src="${primaryImage}" alt="${car.make} ${car.model}">
+        <div class="price">AED ${car.daily_rate}/day</div>
+        ${car.whatsapp_deal ? '<div class="whats">🔥Deals on WhatsApp🔥</div>' : ''}
+        <div class="card-content">
+          <h3>${car.make} ${car.model}</h3>
+          <div class="card-icons">
+            ${features.map(feature => {
+              // Extract feature key for icon lookup
+              const featureKey = feature.toString().split(' ')[1]?.toLowerCase() || 
+                               feature.toString().split(' ')[0]?.toLowerCase();
+              const icon = featureIcons[featureKey] || '';
+              
+              return `
+                <div class="feature-item">
+                  <div class="feature-icon">${icon}</div>
+                  <div class="feature-text">${feature}</div>
+                </div>
+              `;
+            }).join('<div class="feature-separator">|</div>')}
+          </div>
+          ${car.description ? `<p class="description">${car.description}</p>` : ''}
         </div>
-      </div>
-      <div class="card-buttons">
-        <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-<button class="call"><i class="fas fa-phone"></i> Call Us</button>
-      </div>
-    `;
-    
-    cardContainer.appendChild(card);
-  });
-} )
+        <div class="card-buttons">
+          <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+          <button class="call"><i class="fas fa-phone"></i> Call Us</button>
+        </div>
+      `;
+      
+      cardContainer.appendChild(card);
+    });
+  })
   .catch(error => {
     console.error('Error fetching car data:', error);
+    cardContainer.innerHTML = `<p class="error">Error loading cars. Please try again later.</p>`;
   });
-  }
-
-
 
 //   cars.forEach(car => {
 //     const card = document.createElement('div');
@@ -251,7 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //   });
 // }
 
-
+  }
 
   // Initialize marker position on home link
   function initializeMarker() {
