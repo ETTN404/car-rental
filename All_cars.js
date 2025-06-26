@@ -104,57 +104,57 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // Car data array
-  const cars = [
-    {
-      image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 1700',
-      title: 'Chevrolet Corvette C8 Stingray 2025',
-      year: '2024',
-      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 600',
-      title: 'BMW 325i M Sport 2025',
-      year: '2025',
-      features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 25555666500',
-      title: 'Mercedes Benz AMG G63 2024',
-      year: '2024',
-      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 1700',
-      title: 'Chevrolet Corvette C8 Stingray 2025',
-      year: '2024',
-      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 600',
-      title: 'BMW 325i M Sport 2025',
-      year: '2025',
-      features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 2500',
-      title: 'Mercedes Benz AMG G63 2024',
-      year: '2024',
-      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      price: 'AED 2500',
-      title: 'Mercedes Benz AMG G63 2024',
-      year: '2024',
-      features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-    }
-  ];
+  // const cars = [
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 1700',
+  //     title: 'Chevrolet Corvette C8 Stingray 2025',
+  //     year: '2024',
+  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+  //   },
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 600',
+  //     title: 'BMW 325i M Sport 2025',
+  //     year: '2025',
+  //     features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
+  //   },
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 25555666500',
+  //     title: 'Mercedes Benz AMG G63 2024',
+  //     year: '2024',
+  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+  //   },
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 1700',
+  //     title: 'Chevrolet Corvette C8 Stingray 2025',
+  //     year: '2024',
+  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+  //   },
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 600',
+  //     title: 'BMW 325i M Sport 2025',
+  //     year: '2025',
+  //     features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
+  //   },
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 2500',
+  //     title: 'Mercedes Benz AMG G63 2024',
+  //     year: '2024',
+  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+  //   },
+  //   {
+  //     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+  //     price: 'AED 2500',
+  //     title: 'Mercedes Benz AMG G63 2024',
+  //     year: '2024',
+  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
+  //   }
+  // ];
 
   // Function to render cards
   function renderCards() {
@@ -170,18 +170,23 @@ document.addEventListener('DOMContentLoaded', function() {
     'YEAR': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>`
   };
 
+
+
+  fetch('https://car-rental-pi48.onrender.com/api/cars') // Replace with your actual API endpoint
+  .then(response => response.json())
+  .then(cars => {
   cars.forEach(car => {
     const card = document.createElement('div');
     card.className = 'card';
     
     card.innerHTML = `
-      <img src="${car.image}">
-      <div class="price">${car.price}</div>
+      <img src="${car.images}">
+      <div class="price">${car.daily_rate}</div>
       <div class="whats">🔥Deals on WhatsApp🔥</div>
       <div class="card-content">
-        <h3>${car.title}</h3>
+        <h3>${car.slug}</h3>
         <div class="card-icons">
-          ${car.features.map(feature => {
+          ${car.results.map(feature => {
             // Check if feature is a year (4-digit number)
             const isYear = /^\d{4}$/.test(feature);
             const icon = isYear ? featureIcons['YEAR'] : (featureIcons[feature] || '');
@@ -203,7 +208,51 @@ document.addEventListener('DOMContentLoaded', function() {
     
     cardContainer.appendChild(card);
   });
-}
+} )
+  .catch(error => {
+    console.error('Error fetching car data:', error);
+  });
+  }
+
+
+
+//   cars.forEach(car => {
+//     const card = document.createElement('div');
+//     card.className = 'card';
+    
+//     card.innerHTML = `
+//       <img src="${car.image}">
+//       <div class="price">${car.price}</div>
+//       <div class="whats">🔥Deals on WhatsApp🔥</div>
+//       <div class="card-content">
+//         <h3>${car.title}</h3>
+//         <div class="card-icons">
+//           ${car.features.map(feature => {
+//             // Check if feature is a year (4-digit number)
+//             const isYear = /^\d{4}$/.test(feature);
+//             const icon = isYear ? featureIcons['YEAR'] : (featureIcons[feature] || '');
+            
+//             return `
+//               <div class="feature-item">
+//                 <div class="feature-icon">${icon}</div>
+//                 <div class="feature-text">${feature}</div>
+//               </div>
+//             `;
+//           }).join('<div class="feature-separator">|</div>')}
+//         </div>
+//       </div>
+//       <div class="card-buttons">
+//         <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+// <button class="call"><i class="fas fa-phone"></i> Call Us</button>
+//       </div>
+//     `;
+    
+//     cardContainer.appendChild(card);
+//   });
+// }
+
+
+
   // Initialize marker position on home link
   function initializeMarker() {
     const homeLink = document.querySelector('.nav-link');
