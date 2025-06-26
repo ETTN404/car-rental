@@ -193,12 +193,9 @@ document.addEventListener('DOMContentLoaded', function() {
         <h3>${car.slug}</h3>
         <div class="card-icons">
           ${
-                car.features.map(feature,a => 
+                features.map(feature,a => 
                   {
-                // Check if feature is a year (4-digit number)
-                      const isYear = /^\d{4}$/.test(feature);
-                      const icon = isYear ? featureIcons['YEAR'] : (featureIcons[feature] || '');
-                      
+               
                       return `
                         <div class="feature-item">
                           <div class="feature-icon">${featureIcons[a]}</div>
