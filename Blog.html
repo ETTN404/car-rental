@@ -7,231 +7,7 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="All_cars.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <style>
-    /* Changed body styles to .PA */
-    .PA {
-      margin: 0;
-      background: #f4f4f4;
-      font-family: Ubuntu, Helvetica, Arial, sans-serif;
-    }
-
-    .AEparent {
-      margin: 0 100px;
-      padding: 100px 0;
-    }
-
-    .AEcontainer {
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .AEmain-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .AEleft-side {
-      flex: 3;
-      min-width: 300px;
-      background: #f1f1f1;
-    }
-
-    .AEimage-gallery {
-      position: relative;
-      height: 400px;
-    }
-
-    .AEimage-gallery img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .AE2 {
-      position: absolute;
-      height: 60px;
-      width: 60px;
-      background: #52A48E;
-      transform: rotate(45deg);
-      border-left: 4px solid rgba(203, 206, 205);
-      border-top: 4px solid rgba(203, 206, 205);
-      right: 60px;
-      top:91%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .AE2 h3 {
-      transform: rotate(-45deg);
-      margin: 0;
-      line-height: 1.2;
-      font-size: 14px;
-      color: white;
-      text-align: center;
-    }
-
-    .AEtitle {
-      margin-top: 0;
-      
-      border-left: 5px #52A48E solid;
-      background: #fff;
-      font-size: 20px;
-      padding:0 3%;
-    }
-    .AEcontent {
-      margin-bottom: 20px;
-      
-      background: #fff;
-      padding: 70px 0;
-      
-    }
-    .AEcontent div {
-     padding:0 3%;
-    }
-
-    .AEVV {
-      background: white;
-      padding: 40px;
-    }
-
-    .AEtable {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-
-    .AEtable, .AEth, .AEtb {
-      border: 1px solid #ddd;
-    }
-
-    .AEth, .AEtb {
-      padding: 8px;
-      text-align: left;
-    }
-
-    .AErigth-side {
-      flex: 1;
-      background: #fff;
-      height:100%;
-      min-width: 350px;
-      padding: 30px 0;
-    }
-    .AErigth-side h3 {
-      border-left: 4px solid #aaa;
-      padding:0 30px;
-      margin-bottom: 30px;
-    }
-    .AErigth-side p {
-      margin: 10px 40px;
-      font-size: 12px;
-      color: #222;
-      padding-bottom: 5px;
-      font-family: Ubuntu, Helvetica, Arial, sans-serif;
-      border-bottom: 1px solid #ddd;
-    }
-
-    @media (max-width: 768px) {
-      .AEmain-section {
-        flex-direction: column;
-      }
-      .AEparent {
-        margin: 0 20px;
-        padding: 50px 0;
-      }
-    }
- .DEpost-container {
-      max-width: 800px;
-      margin: 20px auto;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-
-    .DEpost {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 20px;
-      text-align: center;
-      
-      margin:0 20px;
-    }
-
-    .DEpost-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-    }
-
-    .DEpost-content {
-      margin-right: 10px;
-    }
-
-    .DEpost h3 {
-      margin: 0;
-      font-size: 16px;
-      padding: 0 10px;
-      color: #333;
-    }
-    .LLL{
-      text-align: right;
-    }
-    .RRR{
-
-      text-align: left;
-    }
-
-    .DEpost img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-    }
-
-    .DEnav-link {
-      color: #52A48E;
-      text-decoration: none;
-      font-size: 14px;
-      display: inline-flex;
-      align-items: center;
-    }
-    .DEnav-link img{
-      width: 20px;
-      height:20px;
-      padding:0 6px;
-    }
-    .p img{
-      transform:rotate(-180deg);
-    }
-
-   
-
-    .DEpost-container {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    @media (max-width: 600px) {
-      .DEpost-container {
-        flex-direction: column;
-        text-align: center;
-      }
-      .DEpost {
-        margin-bottom: 20px;
-      }
-      .DEpost-header {
-        flex-direction: column;
-      }
-      .DEpost-content {
-        margin-right: 0;
-        margin-bottom: 10px;
-      }
-    }
-  </style>
+   <link rel="stylesheet" href="Blog.css">
 </head>
 <body>
 
@@ -254,8 +30,8 @@
   <!-- Lower Navbar (Existing Navigation) -->
   <div class="navbar-lower">
     <div class="nav-links">
-      <a href="#" class="nav-link" onclick="moveMarker(this)">HOME</a>
-      <a href="#" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
+      <a href="Home.html" class="nav-link" onclick="moveMarker(this)">HOME</a>
+      <a href="index.html" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
       <div class="dropdown">
   <span style="padding:33px 0; " class="dropdown-trigger nav-link" onclick="moveMarker(this)">
     CATEGORIES <i class="fas fa-chevron-down"></i>
@@ -269,7 +45,9 @@
   </div>
 </div>
       <a href="#" class="nav-link" onclick="moveMarker(this)">FAQ</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">ABOUT US</a>
       <a href="#" class="nav-link" onclick="moveMarker(this)">CONTACT</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">BLOG</a>
     </div>
     
     <div  class="contact-info">
@@ -304,11 +82,10 @@
 
 <!-- ____________________________________________________________________________________________ --> 
 
- <div class="PA">
+<div class="PA">
     <div class="AEparent">
       <div class="AEcontainer">
         <div class="AEmain-section">
-          <!-- LEFT SIDE -->
           <div class="AEleft-side">
             <div class="AEimage-gallery">
               <div class="AE2">
@@ -316,123 +93,69 @@
               </div>
               <img id="AEmain-image" src="PICS/gc.png" alt="Lamborghini Urus">
             </div>
-
-            <div class="AEcontent">
-              <h1 class="AEtitle">Lamborghini Urus Blue 2025</h1>
-              <div>
-                  <!-- CAR DETAILS i mean add what ever inside this ********************************************* -->
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</p>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</a>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</a>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</a>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</h4>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</h3>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</h2>
-                  <p>Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.</h1>
-                </div>
+            <div class="AEcontent" id="left-content">
+              <!-- Dynamic content will be injected here -->
             </div>
-
             <div class="DEpost-container">
-              <div class="DEpost">
+              <div class="DEpost LLL">
                 <div class="DEpost-header">
                   <div class="DEpost-content LLL">
                     <h3>Top 8 Luxury Car Models Spotted on Dubai's Roads in 2025</h3>
                   </div>
-                  <img src="image.png" alt="Luxury Car">
+                  <img src="PICS/GREEN-CAR.png" alt="Luxury Car">
                 </div>
-                <a href="#" class="DEnav-link p"><img src="SVG/next.svg"/> Previous Post</a>
+                <a href="#" class="DEnav-link p prevPost"><img src="SVG/next.svg"/> Previous Post</a>
               </div>
-              <div class="DEpost">
+              <div class="DEpost RRR">
                 <div class="DEpost-header">
-                  <img src="image.png" alt="SUV">
+                  <img src="PICS/gc.png" alt="SUV">
                   <div class="DEpost-content RRR">
                     <h3>Make Adventures Made Better with an SUV Rental in Dubai UAE</h3>
                   </div>
                 </div>
-                <a href="#" class="DEnav-link">Next Post<img src="SVG/next.svg"/></a>
+                <a href="#" class="DEnav-link nextPost">Next Post<img src="SVG/next.svg"/></a>
               </div>
             </div>
+            
+            <div class="comment-form-section">
+  <h2>Leave a Reply</h2>
+  <p>Your email address will not be published. <strong>Required fields are marked *</strong></p>
+  <form class="comment-form">
+    <div class="form-row">
+      <input type="text" placeholder="Name *" required>
+      <input type="email" placeholder="Email *" required>
+    </div>
+    <textarea placeholder="Comment" required></textarea>
+    <div class="form-row checkbox-row">
+      <input type="checkbox" id="save-info">
+      <label for="save-info">Save my name, email, and website in this browser for the next time I comment.</label>
+    </div>
+    <button type="submit">Post Comment</button>
+  </form>
+</div>
 
-            <div class="AEVV">
-              <table class="AEtable">
-                <tr><th class="AEth">Type</th><th class="AEth">Price</th></tr>
-                <tr><td class="AEtb">Daily</td><td class="AEtb">AED 3600</td></tr>
-              </table>
-
-              <p>
-                Rent and drive this Lamborghini Urus 2024-model in Dubai, UAE for AED 3600/day. Rental cost includes basic comprehensive insurance and standard mileage limit of 250 km/day (AED 5 – AED 30 per additional km applicable). Contact Premium Crystal Car Rental directly for bookings and inquiries.
-              </p>
-            </div>
           </div>
-
-          <!-- RIGHT SIDE -->
           <div class="AErigth-side">
+            <div class="search-container">
+  <input type="text" class="search-input" placeholder="Search...">
+  <button class="search-button">SEARCH</button>
+</div>
+
             <div>
               <h3>Recent Posts</h3>
-              <p>Make Adventures Made Better with an SUV Rental in Dubai UAE</p>
-              <p>Top 5 Ways Renting Supercar in Dubai for Your Business Trip</p>
-              <p>Top 8 Luxury Car Models Spotted on Dubai's Roads in 2025</p>
-              <p>10 Mistakes to Avoid While Driving in United Arab Emirates</p>
-              <p>Top 5 Luxury Car Brands Most Loved in United Arab Emirates</p>
+              <div id="recent-posts"></div>
             </div>
-            
             <div>
               <h3>Recent Comments</h3>
-              <p>Best SUVs for Desert Exploration in Dubai | Blog on SUV Car Rental in Dubai, UAE</p>
-              <p>Off-Roading Adventures: Best SUVs for Desert Exploration in Dubai on Guide To Best Road Trips In Dubai In Premium Luxury Cars Rented</p>
-              <p>Pro Tips for Seamless Luxury Car Rental in Duba... on Tips for Booking the Best Luxury Car Rental in Dubai: What to Consider</p>
-              <p>Tips for Booking the Best Luxury Car Rental in Dubai | Blog on Sports Car Rental in Dubai</p>
-              <p>Road Trips In Dubai In Premium Luxury Cars Rented For VIP Feel on Luxury Car Rental Dubai</p>
+              <div id="recent-comments"></div>
             </div>
-
             <div>
-              <h3>Archieve</h3>
-              <p>June 2025</p>
-              <p>May 2025</p>
-              <p>April 2025</p>
-              <p>March 2025</p>
-              <p>February 2025</p>
-              <p>January 2025</p>
-              <p>December 2024</p>
-              <p>November 2024</p>
-              <p>October 2024</p>
-              <p>September 2024</p>
-              <p>August 2024</p>
-              <p>July 2024</p>
-              <p>June 2024</p>
-              <p>May 2024</p>
-              <p>March 2024</p>
-              <p>February 2024</p>
-              <p>January 2024</p>
-              <p>December 2023</p>
-              <p>November 2023</p>
-              <p>October 2023</p>
+              <h3>Archive</h3>
+              <div id="archives"></div>
             </div>
-
             <div>
               <h3>Categories</h3>
-              <p>Uncategorized</p>
-              <p>Sports Car Rental in Dubai</p>
-              <p>Uncategorized</p>
-              <p>Convertible Car Rental in Dubai</p>
-              <p>Best Car Rental Company in Dubai</p>
-              <p>SUV Car Rental Dubai</p>
-              <p>Best Luxury Car Rental in Dubai</p>
-              <p>Ferrari rental in Dubai</p>
-              <p>Premium Car Rental Dubai</p>
-              <p>Best Car Rental in Dubai</p>
-              <p>Convertible Car Hire Dubai</p>
-              <p>Best Supercar Rental Dubai</p>
-              <p>Best Supercars for Rent in Dubai</p>
-              <p>SUV Car Rentals in Dubai</p>
-              <p>Sports Car Rentals in Dubai</p>
-              <p>Zero Deposit Car Rentals In Dubai</p>
-              <p>Rent a Convertible Car In Dubai</p>
-              <p>Car Rental No Deposit</p>
-              <p>Car Rental Dubai</p>
-              <p>Car Rental Dubai No Deposit</p>
-              <p>Rent a Car in Dubai Without a Deposit</p>
-              <p>Luxury Car Rental Dubai</p>
+              <div id="categories"></div>
             </div>
           </div>
         </div>
@@ -536,7 +259,7 @@
 
 
  <script src="All_cars.js"></script>
-
+<script src="Blog.js"></script>
  
 </body>
 </html>
