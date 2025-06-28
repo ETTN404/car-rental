@@ -1,4 +1,8 @@
 
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  console.log("id:", id);
     const AEimages = ['PICS/R R.png','PICS/new black Rolls Royce Ghost.jpg','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png'];
     const AErelatedCars = [
       {img: 'PICS/R R.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'},

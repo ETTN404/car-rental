@@ -101,60 +101,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-
-
-  // Car data array
-  // const cars = [
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 1700',
-  //     title: 'Chevrolet Corvette C8 Stingray 2025',
-  //     year: '2024',
-  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 600',
-  //     title: 'BMW 325i M Sport 2025',
-  //     year: '2025',
-  //     features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 25555666500',
-  //     title: 'Mercedes Benz AMG G63 2024',
-  //     year: '2024',
-  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 1700',
-  //     title: 'Chevrolet Corvette C8 Stingray 2025',
-  //     year: '2024',
-  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 600',
-  //     title: 'BMW 325i M Sport 2025',
-  //     year: '2025',
-  //     features: ['NO DEPOSIT', '2025', 'INSURANCE', 'USDT OK']
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 2500',
-  //     title: 'Mercedes Benz AMG G63 2024',
-  //     year: '2024',
-  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-  //   },
-  //   {
-  //     image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-  //     price: 'AED 2500',
-  //     title: 'Mercedes Benz AMG G63 2024',
-  //     year: '2024',
-  //     features: ['NO DEPOSIT', '2024', 'INSURANCE', 'USDT OK']
-  //   }
-  // ];
+// starting from here or  little bit above, the code is for rendering car rental cards with features and handling various UI interactions
+// Define the features and their corresponding icons
   const features = [
   'NO DEPOSIT',
   'INSURANCE',
@@ -196,7 +144,7 @@ function renderCards() {
           <div class="price">${car.daily_rate}</div>
           <div class="whats">🔥Deals on WhatsApp🔥</div>
           <div class="card-content">
-            <h3>${car.slug}</h3>
+            <a href="Detail.html?id=32">${car.slug}</a>
             <div class="card-icons">
               ${features
                 .map((feature, index) => `
