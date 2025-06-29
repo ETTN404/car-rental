@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Product Detail</title>
+</head>
+<body>
+  <h1>Product Detail Page</h1>
+  <div id="product-info"></div>
+  <a href="/list">Back to List</a>
+
+  <script>
+    // Extract the product ID from the URL path
+    const pathParts = window.location.pathname.split('/');
+    const productId = pathParts[pathParts.length - 1];
+
+    // Simulated product database
+    const products = {
+      "1": { name: "Phone", price: "$199", description: "A cool smartphone." },
+      "2": { name: "Tablet", price: "$299", description: "A sleek tablet." },
+      "3": { name: "Laptop", price: "$799", description: "A powerful laptop." }
+    };
+
+    const product = products[productId];
+
+    if (product) {
+      document.getElementById("product-info").innerHTML = `
+        <p><strong>ID:</strong> ${productId}</p>
+        <p><strong>Name:</strong> ${product.name}</p>
+        <p><strong>Price:</strong> ${product.price}</p>
+        <p><strong>Description:</strong> ${product.description}</p>
+      `;
+    } else {
+      document.getElementById("product-info").innerHTML = `
+        <p>Product not found.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
