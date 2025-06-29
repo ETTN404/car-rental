@@ -1,6 +1,27 @@
+const params = new URLSearchParams(window.location.search);
+let id = params.get("id");
 
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+if (id !== null) {
+  id = id.trim();
+
+  // Allow only numeric IDs
+  if (!/^\d+$/.test(id)) {
+    console.error("Invalid ID format detected.");
+    id = null;
+  } else {
+    id = parseInt(id, 10); // convert to number if valid
+  }
+} else {
+  console.warn("No ID parameter found in URL.");
+}
+
+// Optional: Handle missing or invalid ID
+if (id === null) {
+  // You can redirect, show an error message, or set a fallback
+  // Example: redirect to an error page
+  window.location.href = "404.html";
+}
+
 
   console.log("id:", id);
     const AEimages = ['PICS/R R.png','PICS/new black Rolls Royce Ghost.jpg','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png'];
