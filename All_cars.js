@@ -50,6 +50,35 @@
 ];
 
 
+function renderFAQs() {
+  const faqContainer = document.querySelector('.faq-container');
+  
+  // Clear existing content (if any)
+  faqContainer.innerHTML = '';
+  
+  // Create and append FAQ items
+  faqData.forEach(faq => {
+    const faqItem = document.createElement('div');
+    faqItem.className = 'faq-item';
+    
+    faqItem.innerHTML = `
+      <div class="faq-question">${faq.question}</div>
+      <div class="faq-answer">${faq.answer}</div>
+    `;
+    
+    faqContainer.appendChild(faqItem);
+  });
+  
+  // Add click event listeners to all questions
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentNode;
+      item.classList.toggle('active');
+    });
+  });
+}
+// document.addEventListener('DOMContentLoaded', function() {});
+  renderFAQs();
 
 
 
@@ -108,7 +137,7 @@ function renderCards() {
         const featureKeys = Object.keys(featureIcons);
 
         card.innerHTML = `
-          <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
+          <img src="${car.image_url || 'PICS/image copy 2.png'}" alt="${car.slug}">
           <div class="price">${car.daily_rate}</div>
           <div class="whats">🔥Deals on WhatsApp🔥</div>
           <div class="card-content">
@@ -262,32 +291,3 @@ function renderCards() {
       behavior: 'smooth'
     });
   });
-function renderFAQs() {
-  const faqContainer = document.querySelector('.faq-container');
-  
-  // Clear existing content (if any)
-  faqContainer.innerHTML = '';
-  
-  // Create and append FAQ items
-  faqData.forEach(faq => {
-    const faqItem = document.createElement('div');
-    faqItem.className = 'faq-item';
-    
-    faqItem.innerHTML = `
-      <div class="faq-question">${faq.question}</div>
-      <div class="faq-answer">${faq.answer}</div>
-    `;
-    
-    faqContainer.appendChild(faqItem);
-  });
-  
-  // Add click event listeners to all questions
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-      const item = question.parentNode;
-      item.classList.toggle('active');
-    });
-  });
-}
-// document.addEventListener('DOMContentLoaded', function() {});
-  renderFAQs();
