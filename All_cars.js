@@ -50,35 +50,6 @@
 ];
 
 
-function renderFAQs() {
-  const faqContainer = document.querySelector('.faq-container');
-  
-  // Clear existing content (if any)
-  faqContainer.innerHTML = '';
-  
-  // Create and append FAQ items
-  faqData.forEach(faq => {
-    const faqItem = document.createElement('div');
-    faqItem.className = 'faq-item';
-    
-    faqItem.innerHTML = `
-      <div class="faq-question">${faq.question}</div>
-      <div class="faq-answer">${faq.answer}</div>
-    `;
-    
-    faqContainer.appendChild(faqItem);
-  });
-  
-  // Add click event listeners to all questions
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-      const item = question.parentNode;
-      item.classList.toggle('active');
-    });
-  });
-}
-// document.addEventListener('DOMContentLoaded', function() {});
-  renderFAQs();
 
 
 
@@ -291,3 +262,32 @@ function renderCards() {
       behavior: 'smooth'
     });
   });
+function renderFAQs() {
+  const faqContainer = document.querySelector('.faq-container');
+  
+  // Clear existing content (if any)
+  faqContainer.innerHTML = '';
+  
+  // Create and append FAQ items
+  faqData.forEach(faq => {
+    const faqItem = document.createElement('div');
+    faqItem.className = 'faq-item';
+    
+    faqItem.innerHTML = `
+      <div class="faq-question">${faq.question}</div>
+      <div class="faq-answer">${faq.answer}</div>
+    `;
+    
+    faqContainer.appendChild(faqItem);
+  });
+  
+  // Add click event listeners to all questions
+  document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentNode;
+      item.classList.toggle('active');
+    });
+  });
+}
+// document.addEventListener('DOMContentLoaded', function() {});
+  renderFAQs();
