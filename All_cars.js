@@ -54,12 +54,12 @@ function renderFAQs() {
 
 const features = ['NO DEPOSIT', 'INSURANCE', 'USDT OK', 'YEAR'];
 
-const featureIcons = {
-  'NO DEPOSIT': '✅',
-  'INSURANCE': '🛡️',
-  'USDT OK': '💰',
-  'YEAR': '📅'
-};
+  const featureIcons = {
+    'NO DEPOSIT': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4.59-12.42L10 14.17l-2.59-2.58L6 13l4 4 8-8z"/></svg>`,
+    'INSURANCE': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm1.65-2.65L11.5 12.2V9h1v2.79l1.85 1.85-.7.71z"/></svg>`,
+    'USDT OK': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 14.09v.58c0 .73-.59 1.33-1.33 1.33h-.01c-.74 0-1.33-.6-1.33-1.33v-.6c-2.46-.42-3.03-1.51-3.18-2.41l1.64-.01c.11.47.36 1.14 1.54 1.54v-4.61c-2.34-.7-2.57-2.12-2.69-3.17l1.64-.01c.08.71.29 1.92 1.05 2.28v-.72c0-.73.59-1.33 1.33-1.33h.01c.74 0 1.33.6 1.33 1.33v.7c1.19.39 1.45 1.1 1.49 1.56l-1.63.01c-.03-.26-.13-1.1-.86-1.5v4.65c2.4.71 2.69 1.9 2.75 3.22l-1.64.01c-.04-.89-.31-1.82-1.5-2.25z"/></svg>`,
+    'YEAR': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>`
+  };
 
 function renderCards() {
   const cardContainer = document.getElementById('cardContainer');
@@ -83,7 +83,7 @@ function renderCards() {
           <div class="price">${car.daily_rate}</div>
           <div class="whats">🔥Deals on WhatsApp🔥</div>
           <div class="card-content">
-            <a href="Detail.html?id=${car.id}">${car.slug}</a>
+             <a href="Detail.html?id=${car.id}" class="atag">${car.slug}</a>
             <div class="card-icons">
               ${features.map(f => `
                 <div class="feature-item">
