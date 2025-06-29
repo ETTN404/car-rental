@@ -77,8 +77,11 @@ function renderFAQs() {
     });
   });
 }
-// document.addEventListener('DOMContentLoaded', function() {});
+document.addEventListener('DOMContentLoaded', function() {
   renderFAQs();
+  // Your other initialization code...
+});
+
 
 
 
@@ -137,11 +140,11 @@ function renderCards() {
         const featureKeys = Object.keys(featureIcons);
 
         card.innerHTML = `
-          <img src="${car.image_url || 'PICS/image copy 2.png'}" alt="${car.slug}">
+          <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
           <div class="price">${car.daily_rate}</div>
           <div class="whats">🔥Deals on WhatsApp🔥</div>
           <div class="card-content">
-            <a href="Detail.html?id=${car.id}" class="atag">${car.slug}</a>
+             <a href="Detail.html?id=${car.id}" class="atag">${car.slug}</a>
             <div class="card-icons">
               ${features
                 .map((feature, index) => `
