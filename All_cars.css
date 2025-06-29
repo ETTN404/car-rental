@@ -887,6 +887,12 @@ body, html {
   margin: 0;
   padding: 0;
 }
+.atag{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
 @media (max-width: 480px) {
   .navbar-lower,
   .navbar-upper {
