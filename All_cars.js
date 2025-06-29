@@ -77,11 +77,8 @@ function renderFAQs() {
     });
   });
 }
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {});
   renderFAQs();
-  // Your other initialization code...
-});
-
 
 
 
