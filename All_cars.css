@@ -579,17 +579,6 @@
     
    
 
-    @media (max-width: 768px) {
-    
-      .faq-container {
-        grid-template-columns: 1fr;
-      }
-      
-      .faq-question {
-        text-align: left;
-        padding-right: 40px;
-      }
-    }
 
     /*card view image zoom when hover*/
     .card {
@@ -891,6 +880,37 @@
   align-items: center;
   margin: 0 4px;
 }
+
+body, html {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 480px) {
+  .navbar-lower,
+  .navbar-upper {
+    padding: 5px; /* Reduce padding */
+  }
+  .card-container {
+    padding: 10px;
+  }
+  .contact-grid {
+    gap: 20px; /* Reduce gap for smaller screens */
+  }
+}
+
+    @media (max-width: 768px) {
+    
+      .faq-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .faq-question {
+        text-align: left;
+        padding-right: 40px;
+      }
+    }
 @media (max-width: 1024px) {
   /* Tablet styles */
   .card {
@@ -905,7 +925,6 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
 @media (max-width: 768px) {
   /* Mobile styles */
   .header-content h1 {
@@ -1044,23 +1063,5 @@
   .bottomleft {
     width: 50%; /* Ensure they don’t exceed viewport */
     height: 60px; /* Adjust height if needed */
-  }
-}
-body, html {
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-@media (max-width: 480px) {
-  .navbar-lower,
-  .navbar-upper {
-    padding: 5px; /* Reduce padding */
-  }
-  .card-container {
-    padding: 10px;
-  }
-  .contact-grid {
-    gap: 20px; /* Reduce gap for smaller screens */
   }
 }
