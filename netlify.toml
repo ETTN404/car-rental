@@ -1,8 +1,1 @@
-[build]
-  command = ""  # No build command needed
-  publish = "."  # Root directory with index.html
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

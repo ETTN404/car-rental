@@ -77,6 +77,7 @@ function renderCards() {
   fetch('https://car-rental-pi48.onrender.com/api/cars')
     .then(res => res.json())
     .then(data => {
+      cardContainer.innerHTML = ``;
       if (!data.results || !Array.isArray(data.results)) {
         console.warn("No car results found");
         return;

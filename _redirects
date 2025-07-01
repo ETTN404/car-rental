@@ -4,5 +4,5 @@
 /index           /index.html         200
 /detail/:id           /Detail.html         200
 /faq            /FAQ.html           200
-/home           /Home.html
+/home           /Home.html          200
 /*              /404.html         404
