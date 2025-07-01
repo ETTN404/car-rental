@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 
     const pathParts = window.location.pathname.split('/');
-    const id = pathParts[pathParts.length - 1];
+    let id = pathParts[pathParts.length - 1];
 
 
 // let id = params.get("id");
