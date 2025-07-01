@@ -1,7 +1,12 @@
 const params = new URLSearchParams(window.location.search);
-let id = params.get("id");
 
-if (id !== null) {
+    const pathParts = window.location.pathname.split('/');
+    const id = pathParts[pathParts.length - 1];
+
+
+// let id = params.get("id");
+
+if (id !== null && id !== undefined && id !== "") {
   id = id.trim();
 
   // Allow only numeric IDs
@@ -14,11 +19,7 @@ if (id !== null) {
 } else {
   console.warn("No ID parameter found in URL.");
 }
-
-// Optional: Handle missing or invalid ID
 if (id === null) {
-  // You can redirect, show an error message, or set a fallback
-  // Example: redirect to an error page
   window.location.href = "404.html";
 }
 
