@@ -65,7 +65,14 @@ function renderCards() {
   const cardContainer = document.getElementById('cardContainer');
   if (!cardContainer) return;
 
-  cardContainer.innerHTML = '';
+    cardContainer.innerHTML = `
+    <div class="newtons-cradle">
+      <div class="newtons-cradle__dot"></div>
+      <div class="newtons-cradle__dot"></div>
+      <div class="newtons-cradle__dot"></div>
+      <div class="newtons-cradle__dot"></div>
+    </div>
+  `;
 
   fetch('https://car-rental-pi48.onrender.com/api/cars')
     .then(res => res.json())
