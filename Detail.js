@@ -7,7 +7,6 @@ const identifier = pathParts[pathParts.length - 1]; // Gets "3" or "lamborghini-
 if (!identifier) {
   console.error("No ID or slug found in URL");
   window.location.href = "/404.html";
-  return;
 }
 
 // Check if it's a numeric ID (e.g., "3") or a slug (e.g., "lamborghini-aventador")
