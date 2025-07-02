@@ -25,11 +25,11 @@ if (id === null) {
 
 
   console.log("id:", id);
-    const AEimages = ['PICS/R R.png','PICS/new black Rolls Royce Ghost.jpg','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png'];
+    const AEimages = ['/PICS/R R.png','PICS/new black Rolls Royce Ghost.jpg','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png'];
     const AErelatedCars = [
-      {img: 'PICS/R R.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'},
-      {img: 'PICS/new black Rolls Royce Ghost.jpg', name: 'Ferrari F8 Tributo 2022', price: 'AED4,000'},
-      {img: 'PICS/gc.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'}
+      {img: '/PICS/R R.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'},
+      {img: '/PICS/new black Rolls Royce Ghost.jpg', name: 'Ferrari F8 Tributo 2022', price: 'AED4,000'},
+      {img: '/PICS/gc.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'}
     ];
 
     // DOM Elements
