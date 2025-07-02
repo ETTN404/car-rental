@@ -84,6 +84,10 @@ function renderCards() {
       }
 
       data.results.forEach(car => {
+        const title = car.slug
+                .split("-")                     // Split by "-"
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each
+                .join(" ");
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
@@ -91,7 +95,7 @@ function renderCards() {
           <div class="price">${car.daily_rate}</div>
           <div class="whats">🔥Deals on WhatsApp🔥</div>
           <div class="card-content">
-             <a href="/detail/${car.id}" class="atag">${car.slug}</a>
+             <a href="/detail/${car.id}" class="atag">${title}</a>
             <div class="card-icons">
               ${features.map(f => `
                 <div class="feature-item">
