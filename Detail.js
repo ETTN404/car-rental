@@ -1,30 +1,30 @@
-// const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-//     const pathParts = window.location.pathname.split('/');
-//     let id = pathParts[pathParts.length - 1];
-
-
-// // let id = params.get("id");
-
-// if (id !== null && id !== undefined && id !== "") {
-//   id = id.trim();
-
-//   // Allow only numeric IDs
-//   if (!/^\d+$/.test(id)) {
-//     console.error("Invalid ID format detected.");
-//     id = null;
-//   } else {
-//     id = parseInt(id, 10); // convert to number if valid
-//   }
-// } else {
-//   console.warn("No ID parameter found in URL.");
-// }
-// if (id === null) {
-//   window.location.href = "404.html";
-// }
+    const pathParts = window.location.pathname.split('/');
+    let id = pathParts[pathParts.length - 1];
 
 
-//   console.log("id:", id);
+// let id = params.get("id");
+
+if (id !== null && id !== undefined && id !== "") {
+  id = id.trim();
+
+  // Allow only numeric IDs
+  if (!/^\d+$/.test(id)) {
+    console.error("Invalid ID format detected.");
+    id = null;
+  } else {
+    id = parseInt(id, 10); // convert to number if valid
+  }
+} else {
+  console.warn("No ID parameter found in URL.");
+}
+if (id === null) {
+  window.location.href = "404.html";
+}
+
+
+  console.log("id:", id);
     const AEimages = ['PICS/R R.png','PICS/new black Rolls Royce Ghost.jpg','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png','PICS/gc.png','PICS/bk.png'];
     const AErelatedCars = [
       {img: 'PICS/R R.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'},
