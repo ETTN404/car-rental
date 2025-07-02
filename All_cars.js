@@ -95,7 +95,7 @@ function renderCards() {
           <div class="price">${car.daily_rate}</div>
           <div class="whats">🔥Deals on WhatsApp🔥</div>
           <div class="card-content">
-             <a href="/detail/${car.id}" class="atag">${title}</a>
+             <a href="/detail/${car.slug}" class="atag">${title}</a>
             <div class="card-icons">
               ${features.map(f => `
                 <div class="feature-item">
