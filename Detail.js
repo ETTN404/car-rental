@@ -1,30 +1,33 @@
-const params = new URLSearchParams(window.location.search);
-
-    const pathParts = window.location.pathname.split('/');
-    let id = pathParts[pathParts.length - 1];
 
 
-// let id = params.get("id");
+// Extract the last part of the URL (e.g., "3" or "lamborghini-aventador")
+const pathParts = window.location.pathname.split('/').filter(Boolean);
+const identifier = pathParts[pathParts.length - 1]; // Gets "3" or "lamborghini-aventador"
 
-if (id !== null && id !== undefined && id !== "") {
-  id = id.trim();
+if (!identifier) {
+  console.error("No ID or slug found in URL");
+  window.location.href = "/404.html";
+  return;
+}
 
-  // Allow only numeric IDs
-  if (!/^\d+$/.test(id)) {
-    console.error("Invalid ID format detected.");
-    id = null;
-  } else {
-    id = parseInt(id, 10); // convert to number if valid
-  }
+// Check if it's a numeric ID (e.g., "3") or a slug (e.g., "lamborghini-aventador")
+const isNumericId = /^\d+$/.test(identifier);
+
+if (isNumericId) {
+  const id = parseInt(identifier, 10);
+  console.log("Numeric ID:", id);
+  // Fetch car by ID (your existing logic)
 } else {
-  console.warn("No ID parameter found in URL.");
-}
-if (id === null) {
-  window.location.href = "404.html";
+  const slug = identifier.toLowerCase(); // Ensure case-insensitive matching
+  console.log("Slug:", slug);
+  // Fetch car by slug (if your API supports it)
 }
 
 
-  console.log("id:", id);
+
+
+
+
     const AEimages = ['/PICS/R R.png','/PICS/new black Rolls Royce Ghost.jpg','/PICS/gc.png','/PICS/bk.png','/PICS/gc.png','/PICS/bk.png','/PICS/gc.png','/PICS/bk.png'];
     const AErelatedCars = [
       {img: '/PICS/R R.png', name: 'Rolls Royce Dawn 2017', price: 'AED3,500'},
