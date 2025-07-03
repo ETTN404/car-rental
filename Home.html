@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="All_cars.css">
   <link rel="stylesheet" href="Home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 <body>
 
@@ -71,10 +70,13 @@
   <h1>Premium Crystal Car Rental</h1>
   <p>Best Car Rental Company in Dubai</p>
 
-  <div class="search-box">
-    <input type="text" placeholder="Find your dream car...">
-    <button><i class="fas fa-search"></i></button>
-  </div>
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Find your dream car..." autocomplete="off">
+  <button><i class="fas fa-search"></i></button>
+  <div id="suggestions" class="suggestions-box"></div>
+</div>
+
+
 </div>
 
   <!-- Triangles for Cut Effect -->
@@ -604,8 +606,111 @@
 
  <script src="All_cars.js"></script>
  <script src="Home.js"></script>
- 
+ <script>
+  const carList = [
+    { title: "Honda Civic", image: "img1.jpg", description: "Reliable and efficient." },
+    { title: "Toyota Corolla", image: "img2.jpg", description: "Great resale value." },
+    { title: "Ford Mustang", image: "img3.jpg", description: "Sporty and powerful." },
+    { title: "Tesla Model S", image: "img4.jpg", description: "Electric luxury." },
+    { title: "BMW 3 Series", image: "img5.jpg", description: "Refined driving." },
+    { title: "Audi A4", image: "img6.jpg", description: "Premium German sedan." },
+    { title: "Mercedes-Benz C-Class", image: "img7.jpg", description: "Comfort and prestige." },
+    { title: "Chevrolet Camaro", image: "img8.jpg", description: "American muscle." },
+    // Add more to test "more items..."
+    { title: "Hyundai Elantra", image: "img9.jpg", description: "Economical and sleek." },
+    { title: "Kia Optima", image: "img10.jpg", description: "Feature-packed." },
+    { title: "Nissan Altima", image: "img11.jpg", description: "Smooth and stylish." },
+    { title: "Mazda 6", image: "img12.jpg", description: "Driver-focused design." },
+    { title: "Subaru Impreza", image: "img13.jpg", description: "AWD stability." },
+    { title: "Volkswagen Passat", image: "img14.jpg", description: "Euro feel, value price." },
+    { title: "Lexus IS", image: "img15.jpg", description: "Luxury and reliability." },
+    // ...add more if needed
+  ];
 
+  const input = document.getElementById("searchInput");
+  const suggestionsBox = document.getElementById("suggestions");
+
+  let filteredResults = [];
+  let shownCount = 0;
+  const batchSize = 5;
+
+  input.addEventListener("input", () => {
+    const query = input.value.toLowerCase();
+    suggestionsBox.innerHTML = "";
+    shownCount = 0;
+
+    if (!query) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    filteredResults = carList.filter(car =>
+      car.title.toLowerCase().includes(query)
+    );
+
+    if (filteredResults.length === 0) {
+      suggestionsBox.style.display = "none";
+      return;
+    }
+
+    loadMoreSuggestions();
+    suggestionsBox.style.display = "block";
+  });
+
+  function loadMoreSuggestions() {
+    const end = Math.min(shownCount + batchSize, filteredResults.length);
+    const toShow = filteredResults.slice(shownCount, end);
+    toShow.forEach(car => {
+      const item = document.createElement("div");
+      item.className = "suggestion-item";
+      item.innerHTML = `
+        <img src="${car.image}" alt="${car.title}">
+        <div class="suggestion-content">
+          <a href="#">${car.title}</a>
+          <p>${car.description}</p>
+        </div>
+      `;
+      item.addEventListener("click", () => {
+        input.value = car.title;
+        suggestionsBox.style.display = "none";
+        console.log("Selected:", car.title);
+      });
+      suggestionsBox.appendChild(item);
+    });
+
+    shownCount = end;
+
+    // Add or update the "more results" button
+    const existingMore = document.querySelector(".more-results");
+    if (shownCount < filteredResults.length) {
+      const remaining = filteredResults.length - shownCount;
+      if (existingMore) {
+        existingMore.textContent = `More results... (${remaining})`;
+      } else {
+        const more = document.createElement("div");
+        more.className = "more-results";
+        more.textContent = `More results... (${remaining})`;
+        more.addEventListener("click", () => {
+          more.remove(); // remove old button first
+          loadMoreSuggestions();
+        });
+        suggestionsBox.appendChild(more);
+      }
+    } else if (existingMore) {
+      existingMore.remove(); // All items shown, remove the button
+    }
+  }
+
+  // Optional: hide suggestions on outside click
+  document.addEventListener("click", (e) => {
+    if (!document.querySelector(".search-box").contains(e.target)) {
+      suggestionsBox.style.display = "none";
+    }
+  });
+
+
+</script>
  
 </body>
+
 </html>
