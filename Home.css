@@ -966,3 +966,123 @@ h2, h1 {
   overflow-y: auto;
 }
 
+/* Mobile & Small Screen Adjustments */
+@media (max-width: 768px) {
+  .header-section {
+    height: 400px;
+  }
+  
+  .header-content {
+    transform: none;
+    padding: 0 15px;
+  }
+  
+  .header-content h1 {
+    font-size: 32px;
+  }
+  
+  .header-content p {
+    font-size: 16px;
+  }
+  
+  .search-box {
+    width: 90%;
+  }
+  
+  .categories-grid {
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .category-item {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .carousel-container {
+    padding: 30px 10px;
+  }
+  
+  .carousel-slide {
+    flex: 0 0 calc(100% / 2);
+  }
+  
+  .prev, .next {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .prev {
+    left: 5px;
+  }
+  
+  .next {
+    right: 5px;
+  }
+  
+  .card-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  
+  .allautos_card {
+    position: static;
+    transform: none;
+    margin: 20px auto;
+    width: 80%;
+    padding: 10px;
+  }
+  
+  .faq-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .faq-item {
+    margin-right: 0;
+  }
+  
+  .RM-review-section {
+    padding: 20px;
+  }
+  
+  .VM-container {
+    padding: 20px;
+  }
+  
+  .suggestions-box {
+    width: 100%;
+    left: 0;
+  }
+}
+
+/* Extra Small Devices (e.g. iPhone SE) */
+@media (max-width: 375px) {
+  .header-content h1 {
+    font-size: 28px;
+  }
+  
+  .category-item {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .search-box input {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* Tablet Portrait Adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .carousel-slide {
+    flex: 0 0 calc(100% / 3);
+  }
+}
