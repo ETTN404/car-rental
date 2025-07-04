@@ -606,25 +606,23 @@
 
  <script src="All_cars.js"></script>
  <script src="Home.js"></script>
- <script>
+<script>
   const carList = [
-    { title: "Honda Civic", image: "img1.jpg", description: "Reliable and efficient." },
-    { title: "Toyota Corolla", image: "img2.jpg", description: "Great resale value." },
-    { title: "Ford Mustang", image: "img3.jpg", description: "Sporty and powerful." },
-    { title: "Tesla Model S", image: "img4.jpg", description: "Electric luxury." },
-    { title: "BMW 3 Series", image: "img5.jpg", description: "Refined driving." },
-    { title: "Audi A4", image: "img6.jpg", description: "Premium German sedan." },
-    { title: "Mercedes-Benz C-Class", image: "img7.jpg", description: "Comfort and prestige." },
-    { title: "Chevrolet Camaro", image: "img8.jpg", description: "American muscle." },
-    // Add more to test "more items..."
-    { title: "Hyundai Elantra", image: "img9.jpg", description: "Economical and sleek." },
-    { title: "Kia Optima", image: "img10.jpg", description: "Feature-packed." },
-    { title: "Nissan Altima", image: "img11.jpg", description: "Smooth and stylish." },
-    { title: "Mazda 6", image: "img12.jpg", description: "Driver-focused design." },
-    { title: "Subaru Impreza", image: "img13.jpg", description: "AWD stability." },
-    { title: "Volkswagen Passat", image: "img14.jpg", description: "Euro feel, value price." },
-    { title: "Lexus IS", image: "img15.jpg", description: "Luxury and reliability." },
-    // ...add more if needed
+    { title: "Honda Civic", image: "PICS/3dcar.png", description: "Reliable and efficient." },
+    { title: "Toyota Corolla", image: "PICS/111.png", description: "Great resale value." },
+    { title: "Ford Mustang", image: "PICS/222.png", description: "Sporty and powerful." },
+    { title: "Tesla Model S", image: "PICS/333.png", description: "Electric luxury." },
+    { title: "BMW 3 Series", image: "PICS/bk.png", description: "Refined driving." },
+    { title: "Audi A4", image: "PICS/black_car.png", description: "Premium German sedan." },
+    { title: "Mercedes-Benz C-Class", image: "PICS/gc.png", description: "Comfort and prestige." },
+    { title: "Chevrolet Camaro", image: "PICS/green car green area.png", description: "American muscle." },
+    { title: "Hyundai Elantra", image: "PICS/image copy 2.png", description: "Economical and sleek." },
+    { title: "Kia Optima", image: "PICS/image.png", description: "Feature-packed." },
+    { title: "Nissan Altima", image: "PICS/image3.png", description: "Smooth and stylish." },
+    { title: "Mazda 6", image: "PICS/image5.png", description: "Driver-focused design." },
+    { title: "Subaru Impreza", image: "PICS/image2.png", description: "AWD stability." },
+    { title: "Volkswagen Passat", image: "PICS/image11.png", description: "Euro feel, value price." },
+    { title: "Lexus IS", image: "PICS/R R.png", description: "Luxury and reliability." },
   ];
 
   const input = document.getElementById("searchInput");
@@ -649,7 +647,8 @@
     );
 
     if (filteredResults.length === 0) {
-      suggestionsBox.style.display = "none";
+      suggestionsBox.innerHTML = '<div class="no-items">No items found</div>';
+      suggestionsBox.style.display = "block";
       return;
     }
 
@@ -670,7 +669,9 @@
           <p>${car.description}</p>
         </div>
       `;
-      item.addEventListener("click", () => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         input.value = car.title;
         suggestionsBox.style.display = "none";
         console.log("Selected:", car.title);
@@ -680,37 +681,53 @@
 
     shownCount = end;
 
-    // Add or update the "more results" button
     const existingMore = document.querySelector(".more-results");
+    if (existingMore) {
+      existingMore.remove();
+    }
+
     if (shownCount < filteredResults.length) {
       const remaining = filteredResults.length - shownCount;
-      if (existingMore) {
-        existingMore.textContent = `More results... (${remaining})`;
-      } else {
-        const more = document.createElement("div");
-        more.className = "more-results";
-        more.textContent = `More results... (${remaining})`;
-        more.addEventListener("click", () => {
-          more.remove(); // remove old button first
-          loadMoreSuggestions();
-        });
-        suggestionsBox.appendChild(more);
-      }
-    } else if (existingMore) {
-      existingMore.remove(); // All items shown, remove the button
+      const more = document.createElement("div");
+      more.className = "more-results";
+      more.textContent = `More results... (${remaining})`;
+      more.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        more.remove();
+        loadMoreSuggestions();
+      });
+      suggestionsBox.appendChild(more);
     }
   }
 
-  // Optional: hide suggestions on outside click
-  document.addEventListener("click", (e) => {
-    if (!document.querySelector(".search-box").contains(e.target)) {
+  // Hide suggestions only when clicking outside both input and suggestions box
+  document.addEventListener("mousedown", (e) => {
+    const searchBox = document.querySelector(".search-box");
+    const isClickInside = (searchBox && searchBox.contains(e.target)) || suggestionsBox.contains(e.target);
+    if (!isClickInside && suggestionsBox.style.display === "block") {
       suggestionsBox.style.display = "none";
     }
   });
 
-
+  // Show suggestions on input focus if there are valid results or no items
+  input.addEventListener("focus", () => {
+    if (input.value.trim()) {
+      const query = input.value.toLowerCase();
+      filteredResults = carList.filter(car =>
+        car.title.toLowerCase().includes(query)
+      );
+      suggestionsBox.innerHTML = "";
+      if (filteredResults.length === 0) {
+        suggestionsBox.innerHTML = '<div class="no-items">No items found</div>';
+      } else {
+        shownCount = 0;
+        loadMoreSuggestions();
+      }
+      suggestionsBox.style.display = "block";
+    }
+  });
 </script>
- 
 </body>
 
 </html>
