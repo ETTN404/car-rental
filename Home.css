@@ -695,14 +695,14 @@
     padding: 30px 15px;
   }
   .carousel-slide {
-    flex: 0 0 calc(100% / 3);
+    flex: 0 0 calc(100% / 2); /* Changed to 2 items per row for carousel */
   }
   .prev, .next {
     width: 50px;
     height: 50px;
   }
   .faq-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* One FAQ item per row */
   }
   .faq-question {
     padding-right: 40px;
@@ -712,7 +712,7 @@
     margin: 1rem auto;
   }
   .RS-why-choose-section {
-    flex-direction: column;
+    flex-direction: column; /* One item per row */
     min-height: auto;
     padding: 20px;
   }
@@ -739,10 +739,32 @@
   .VM-container h2 {
     font-size: 20px;
   }
+  .VM-flex-container {
+    flex-direction: column; /* One item per row */
+    align-items: center;
+  }
   .VM-flex-item {
     white-space: normal;
     padding: 8px 12px;
     font-size: 14px;
+  }
+  .VM-flex-item:not(:last-child)::after {
+    content: none; /* Remove separator for vertical layout */
+  }
+  .categories-grid {
+    flex-direction: column; /* One category item per row */
+    align-items: center;
+  }
+  .category-item {
+    width: 100%; /* Full width for single column */
+    max-width: 300px; /* Limit max width for consistency */
+  }
+  .QR-container {
+    flex-direction: column; /* One item per row */
+    align-items: center;
+  }
+  .QR-left, .QR-right, .QR-center {
+    max-width: 100%; /* Full width for single column */
   }
   .RM-review-section {
     max-width: 100%;
@@ -762,7 +784,7 @@
 
 @media (max-width: 480px) {
   .carousel-slide {
-    flex: 0 0 calc(100% / 2);
+    flex: 0 0 calc(100% / 1); /* One item per row for carousel */
   }
   .RS-content-container h2 {
     font-size: 24px;
@@ -772,5 +794,23 @@
   }
   .RS-image-container {
     max-height: 200px;
+  }
+  .card-grid {
+    grid-template-columns: 1fr; /* One card per row */
+  }
+  .categories-grid {
+    flex-direction: column; /* One category item per row */
+    align-items: center;
+  }
+  .category-item {
+    width: 100%; /* Full width for single column */
+    max-width: 250px; /* Limit max width for consistency */
+  }
+  .QR-container {
+    flex-direction: column; /* One item per row */
+    align-items: center;
+  }
+  .QR-left, .QR-right, .QR-center {
+    max-width: 100%; /* Full width for single column */
   }
 }
