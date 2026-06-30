@@ -119,6 +119,8 @@ function renderCards() {
               .join(" ");
       const card = document.createElement('div');
       card.className = 'card';
+      card.style.cursor = 'pointer';
+      card.onclick = () => window.location.href = `Detail.html?id=${car.id}`;
       card.innerHTML = `
         <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
         <div class="price">${car.daily_rate}</div>
