@@ -74,46 +74,74 @@ function renderCards() {
     </div>
   `;
 
-  fetch('https://car-rental-pi48.onrender.com/api/cars')
-    .then(res => res.json())
-    .then(data => {
-      cardContainer.innerHTML = ``;
-      if (!data.results || !Array.isArray(data.results)) {
-        console.warn("No car results found");
-        return;
-      }
+  // fetch('https://car-rental-pi48.onrender.com/api/cars')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     cardContainer.innerHTML = ``;
+  //     if (!data.results || !Array.isArray(data.results)) {
+  //       console.warn("No car results found");
+  //       return;
+  //     }
+  // ...
+  //   })
+  //   .catch(err => console.error("Error fetching car data:", err));
 
-      data.results.forEach(car => {
-        const title = car.slug
-                .split("-")                     // Split by "-"
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each
-                .join(" ");
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
-          <div class="price">${car.daily_rate}</div>
-          <div class="whats">🔥Deals on WhatsApp🔥</div>
-          <div class="card-content">
-             <a href="/detail/${car.slug+car.id}" class="atag">${title}</a>
-            <div class="card-icons">
-              ${features.map(f => `
-                <div class="feature-item">
-                  <div class="feature-icon">${featureIcons[f] || ''}</div>
-                  <div class="feature-text">${f}</div>
-                </div>
-              `).join('<div class="feature-separator">|</div>')}
-            </div>
+  const staticCars = [
+    { id: 1, slug: 'lamborghini-huracan', image_url: 'PICS/111.png', daily_rate: 'AED 3,000' },
+    { id: 2, slug: 'ferrari-f8-tributo', image_url: 'PICS/222.png', daily_rate: 'AED 3,500' },
+    { id: 3, slug: 'rolls-royce-ghost', image_url: 'PICS/new black Rolls Royce Ghost.jpg', daily_rate: 'AED 4,000' },
+    { id: 4, slug: 'mercedes-g63-amg', image_url: 'PICS/333.png', daily_rate: 'AED 2,500' },
+    { id: 5, slug: 'porsche-911-carrera', image_url: 'PICS/444.png', daily_rate: 'AED 2,800' },
+    { id: 6, slug: 'audi-r8-v10', image_url: 'PICS/555.png', daily_rate: 'AED 2,600' },
+    { id: 7, slug: 'range-rover-sport', image_url: 'PICS/GREEN-CAR.png', daily_rate: 'AED 1,500' },
+    { id: 8, slug: 'rolls-royce-cullinan', image_url: 'PICS/R R.png', daily_rate: 'AED 4,500' },
+    { id: 9, slug: 'bmw-m4-competition', image_url: 'PICS/bk.png', daily_rate: 'AED 1,800' },
+    { id: 10, slug: 'lamborghini-urus', image_url: 'PICS/black_car.png', daily_rate: 'AED 3,800' },
+    { id: 11, slug: 'mclaren-720s', image_url: 'PICS/gc.png', daily_rate: 'AED 3,200' },
+    { id: 12, slug: 'aston-martin-vantage', image_url: 'PICS/green car green area.png', daily_rate: 'AED 2,900' },
+    { id: 13, slug: 'bentley-continental-gt', image_url: 'PICS/image copy 2.png', daily_rate: 'AED 3,100' },
+    { id: 14, slug: 'ferrari-488-spider', image_url: 'PICS/image copy.png', daily_rate: 'AED 3,300' },
+    { id: 15, slug: 'audi-rsq8', image_url: 'PICS/image.png', daily_rate: 'AED 2,200' },
+    { id: 16, slug: 'mercedes-s-class', image_url: 'PICS/image11.png', daily_rate: 'AED 2,400' },
+    { id: 17, slug: 'porsche-panamera', image_url: 'PICS/image2.png', daily_rate: 'AED 2,100' },
+    { id: 18, slug: 'bmw-x7-m50i', image_url: 'PICS/image3.png', daily_rate: 'AED 1,900' },
+    { id: 19, slug: 'maserati-levante', image_url: 'PICS/image4.png', daily_rate: 'AED 1,700' },
+    { id: 20, slug: 'cadillac-escalade', image_url: 'PICS/image5.png', daily_rate: 'AED 1,600' },
+    { id: 21, slug: 'chevrolet-corvette', image_url: 'PICS/image6.png', daily_rate: 'AED 1,400' }
+  ];
+
+  setTimeout(() => {
+    cardContainer.innerHTML = '';
+    staticCars.forEach(car => {
+      const title = car.slug
+              .split("-")                     // Split by "-"
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each
+              .join(" ");
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
+        <div class="price">${car.daily_rate}</div>
+        <div class="whats">🔥Deals on WhatsApp🔥</div>
+        <div class="card-content">
+           <a href="/detail/${car.slug+car.id}" class="atag">${title}</a>
+          <div class="card-icons">
+            ${features.map(f => `
+              <div class="feature-item">
+                <div class="feature-icon">${featureIcons[f] || ''}</div>
+                <div class="feature-text">${f}</div>
+              </div>
+            `).join('<div class="feature-separator">|</div>')}
           </div>
-          <div class="card-buttons">
-            <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-            <button class="call"><i class="fas fa-phone"></i> Call Us</button>
-          </div>
-        `;
-        cardContainer.appendChild(card);
-      });
-    })
-    .catch(err => console.error("Error fetching car data:", err));
+        </div>
+        <div class="card-buttons">
+          <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+          <button class="call"><i class="fas fa-phone"></i> Call Us</button>
+        </div>
+      `;
+      cardContainer.appendChild(card);
+    });
+  }, 300);
 }
 
 // ==== Navbar Marker ====
