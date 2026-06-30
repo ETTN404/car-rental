@@ -61,11 +61,38 @@ const features = ['NO DEPOSIT', 'INSURANCE', 'USDT OK', 'YEAR'];
     'YEAR': `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/></svg>`
   };
 
+const CARS_PER_PAGE = 6;
+let currentPage = 1;
+
+const staticCars = [
+  { id: 1, slug: 'lamborghini-huracan', image_url: 'PICS/111.png', daily_rate: 'AED 3,000' },
+  { id: 2, slug: 'ferrari-f8-tributo', image_url: 'PICS/222.png', daily_rate: 'AED 3,500' },
+  { id: 3, slug: 'rolls-royce-ghost', image_url: 'PICS/new black Rolls Royce Ghost.jpg', daily_rate: 'AED 4,000' },
+  { id: 4, slug: 'mercedes-g63-amg', image_url: 'PICS/333.png', daily_rate: 'AED 2,500' },
+  { id: 5, slug: 'porsche-911-carrera', image_url: 'PICS/444.png', daily_rate: 'AED 2,800' },
+  { id: 6, slug: 'audi-r8-v10', image_url: 'PICS/555.png', daily_rate: 'AED 2,600' },
+  { id: 7, slug: 'range-rover-sport', image_url: 'PICS/GREEN-CAR.png', daily_rate: 'AED 1,500' },
+  { id: 8, slug: 'rolls-royce-cullinan', image_url: 'PICS/R R.png', daily_rate: 'AED 4,500' },
+  { id: 9, slug: 'bmw-m4-competition', image_url: 'PICS/bk.png', daily_rate: 'AED 1,800' },
+  { id: 10, slug: 'lamborghini-urus', image_url: 'PICS/black_car.png', daily_rate: 'AED 3,800' },
+  { id: 11, slug: 'mclaren-720s', image_url: 'PICS/gc.png', daily_rate: 'AED 3,200' },
+  { id: 12, slug: 'aston-martin-vantage', image_url: 'PICS/green car green area.png', daily_rate: 'AED 2,900' },
+  { id: 13, slug: 'bentley-continental-gt', image_url: 'PICS/image copy 2.png', daily_rate: 'AED 3,100' },
+  { id: 14, slug: 'ferrari-488-spider', image_url: 'PICS/image copy.png', daily_rate: 'AED 3,300' },
+  { id: 15, slug: 'audi-rsq8', image_url: 'PICS/image.png', daily_rate: 'AED 2,200' },
+  { id: 16, slug: 'mercedes-s-class', image_url: 'PICS/image11.png', daily_rate: 'AED 2,400' },
+  { id: 17, slug: 'porsche-panamera', image_url: 'PICS/image2.png', daily_rate: 'AED 2,100' },
+  { id: 18, slug: 'bmw-x7-m50i', image_url: 'PICS/image3.png', daily_rate: 'AED 1,900' },
+  { id: 19, slug: 'maserati-levante', image_url: 'PICS/image4.png', daily_rate: 'AED 1,700' },
+  { id: 20, slug: 'cadillac-escalade', image_url: 'PICS/image5.png', daily_rate: 'AED 1,600' },
+  { id: 21, slug: 'chevrolet-corvette', image_url: 'PICS/image6.png', daily_rate: 'AED 1,400' }
+];
+
 function renderCards() {
   const cardContainer = document.getElementById('cardContainer');
   if (!cardContainer) return;
 
-    cardContainer.innerHTML = `
+  cardContainer.innerHTML = `
     <div class="newtons-cradle">
       <div class="newtons-cradle__dot"></div>
       <div class="newtons-cradle__dot"></div>
@@ -74,76 +101,117 @@ function renderCards() {
     </div>
   `;
 
-  // fetch('https://car-rental-pi48.onrender.com/api/cars')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     cardContainer.innerHTML = ``;
-  //     if (!data.results || !Array.isArray(data.results)) {
-  //       console.warn("No car results found");
-  //       return;
-  //     }
-  // ...
-  //   })
-  //   .catch(err => console.error("Error fetching car data:", err));
-
-  const staticCars = [
-    { id: 1, slug: 'lamborghini-huracan', image_url: 'PICS/111.png', daily_rate: 'AED 3,000' },
-    { id: 2, slug: 'ferrari-f8-tributo', image_url: 'PICS/222.png', daily_rate: 'AED 3,500' },
-    { id: 3, slug: 'rolls-royce-ghost', image_url: 'PICS/new black Rolls Royce Ghost.jpg', daily_rate: 'AED 4,000' },
-    { id: 4, slug: 'mercedes-g63-amg', image_url: 'PICS/333.png', daily_rate: 'AED 2,500' },
-    { id: 5, slug: 'porsche-911-carrera', image_url: 'PICS/444.png', daily_rate: 'AED 2,800' },
-    { id: 6, slug: 'audi-r8-v10', image_url: 'PICS/555.png', daily_rate: 'AED 2,600' },
-    { id: 7, slug: 'range-rover-sport', image_url: 'PICS/GREEN-CAR.png', daily_rate: 'AED 1,500' },
-    { id: 8, slug: 'rolls-royce-cullinan', image_url: 'PICS/R R.png', daily_rate: 'AED 4,500' },
-    { id: 9, slug: 'bmw-m4-competition', image_url: 'PICS/bk.png', daily_rate: 'AED 1,800' },
-    { id: 10, slug: 'lamborghini-urus', image_url: 'PICS/black_car.png', daily_rate: 'AED 3,800' },
-    { id: 11, slug: 'mclaren-720s', image_url: 'PICS/gc.png', daily_rate: 'AED 3,200' },
-    { id: 12, slug: 'aston-martin-vantage', image_url: 'PICS/green car green area.png', daily_rate: 'AED 2,900' },
-    { id: 13, slug: 'bentley-continental-gt', image_url: 'PICS/image copy 2.png', daily_rate: 'AED 3,100' },
-    { id: 14, slug: 'ferrari-488-spider', image_url: 'PICS/image copy.png', daily_rate: 'AED 3,300' },
-    { id: 15, slug: 'audi-rsq8', image_url: 'PICS/image.png', daily_rate: 'AED 2,200' },
-    { id: 16, slug: 'mercedes-s-class', image_url: 'PICS/image11.png', daily_rate: 'AED 2,400' },
-    { id: 17, slug: 'porsche-panamera', image_url: 'PICS/image2.png', daily_rate: 'AED 2,100' },
-    { id: 18, slug: 'bmw-x7-m50i', image_url: 'PICS/image3.png', daily_rate: 'AED 1,900' },
-    { id: 19, slug: 'maserati-levante', image_url: 'PICS/image4.png', daily_rate: 'AED 1,700' },
-    { id: 20, slug: 'cadillac-escalade', image_url: 'PICS/image5.png', daily_rate: 'AED 1,600' },
-    { id: 21, slug: 'chevrolet-corvette', image_url: 'PICS/image6.png', daily_rate: 'AED 1,400' }
-  ];
-
   setTimeout(() => {
-    cardContainer.innerHTML = '';
-    staticCars.forEach(car => {
-      const title = car.slug
-              .split("-")                     // Split by "-"
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each
-              .join(" ");
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.style.cursor = 'pointer';
-      card.onclick = () => window.location.href = `Detail.html?id=${car.id}`;
-      card.innerHTML = `
-        <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
-        <div class="price">${car.daily_rate}</div>
-        <div class="whats">🔥Deals on WhatsApp🔥</div>
-        <div class="card-content">
-           <a href="Detail.html?id=${car.id}" class="atag">${title}</a>
-          <div class="card-icons">
-            ${features.map(f => `
-              <div class="feature-item">
-                <div class="feature-icon">${featureIcons[f] || ''}</div>
-                <div class="feature-text">${f}</div>
-              </div>
-            `).join('<div class="feature-separator">|</div>')}
-          </div>
-        </div>
-        <div class="card-buttons">
-          <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-          <button class="call"><i class="fas fa-phone"></i> Call Us</button>
-        </div>
-      `;
-      cardContainer.appendChild(card);
-    });
+    renderPage(currentPage);
   }, 300);
+}
+
+function renderPage(page) {
+  const cardContainer = document.getElementById('cardContainer');
+  if (!cardContainer) return;
+
+  const totalPages = Math.ceil(staticCars.length / CARS_PER_PAGE);
+  currentPage = Math.max(1, Math.min(page, totalPages));
+
+  const start = (currentPage - 1) * CARS_PER_PAGE;
+  const end = start + CARS_PER_PAGE;
+  const carsToShow = staticCars.slice(start, end);
+
+  cardContainer.innerHTML = '';
+
+  carsToShow.forEach(car => {
+    const title = car.slug
+            .split("-")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.cursor = 'pointer';
+    card.onclick = () => window.location.href = `Detail.html?id=${car.id}`;
+    card.innerHTML = `
+      <img src="${car.image_url || 'https://via.placeholder.com/300'}" alt="${car.slug}">
+      <div class="price">${car.daily_rate}</div>
+      <div class="whats">🔥Deals on WhatsApp🔥</div>
+      <div class="card-content">
+         <a href="Detail.html?id=${car.id}" class="atag">${title}</a>
+        <div class="card-icons">
+          ${features.map(f => `
+            <div class="feature-item">
+              <div class="feature-icon">${featureIcons[f] || ''}</div>
+              <div class="feature-text">${f}</div>
+            </div>
+          `).join('<div class="feature-separator">|</div>')}
+        </div>
+      </div>
+      <div class="card-buttons">
+        <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+        <button class="call"><i class="fas fa-phone"></i> Call Us</button>
+      </div>
+    `;
+    cardContainer.appendChild(card);
+  });
+
+  // Build pagination controls
+  const existingPagination = document.getElementById('paginationControls');
+  if (existingPagination) existingPagination.remove();
+
+  const pagination = document.createElement('div');
+  pagination.id = 'paginationControls';
+  pagination.style.cssText = 'display:flex; justify-content:center; align-items:center; gap:8px; margin:30px auto; padding:20px 0; flex-wrap:wrap;';
+
+  // Shared button base style
+  const btnBase = 'border:none; color:#fff; font-family:inherit; font-size:0.95rem; cursor:pointer; transition:all 0.3s ease; border-radius:6px;';
+
+  // Previous button
+  const prevBtn = document.createElement('button');
+  prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i> Prev';
+  prevBtn.style.cssText = btnBase + 'padding:10px 20px; background:' + (currentPage === 1 ? '#333' : '#c8a84e') + ';' + (currentPage === 1 ? 'opacity:0.4; cursor:default;' : '');
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => { if (currentPage > 1) goToPage(currentPage - 1); };
+
+  // Next button
+  const nextBtn = document.createElement('button');
+  nextBtn.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
+  nextBtn.style.cssText = btnBase + 'padding:10px 20px; background:' + (currentPage === totalPages ? '#333' : '#c8a84e') + ';' + (currentPage === totalPages ? 'opacity:0.4; cursor:default;' : '');
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => { if (currentPage < totalPages) goToPage(currentPage + 1); };
+
+  pagination.appendChild(prevBtn);
+
+  // Page number buttons
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement('button');
+    pageBtn.textContent = i;
+    const isActive = i === currentPage;
+    pageBtn.style.cssText = btnBase + 'padding:10px 16px; min-width:42px; background:' + (isActive ? '#c8a84e' : 'transparent') + '; border:1px solid ' + (isActive ? '#c8a84e' : '#555') + '; color:' + (isActive ? '#000' : '#fff') + '; font-weight:' + (isActive ? '700' : '400') + ';';
+    pageBtn.onclick = () => goToPage(i);
+
+    // Hover effect for non-active
+    if (!isActive) {
+      pageBtn.onmouseenter = () => { pageBtn.style.background = 'rgba(200,168,78,0.2)'; pageBtn.style.borderColor = '#c8a84e'; };
+      pageBtn.onmouseleave = () => { pageBtn.style.background = 'transparent'; pageBtn.style.borderColor = '#555'; };
+    }
+
+    pagination.appendChild(pageBtn);
+  }
+
+  pagination.appendChild(nextBtn);
+
+  // Page info text
+  const info = document.createElement('div');
+  info.style.cssText = 'width:100%; text-align:center; color:#999; font-size:0.85rem; margin-top:6px;';
+  info.textContent = `Showing ${start + 1}–${Math.min(end, staticCars.length)} of ${staticCars.length} vehicles`;
+  pagination.appendChild(info);
+
+  cardContainer.parentNode.insertBefore(pagination, cardContainer.nextSibling);
+}
+
+function goToPage(page) {
+  renderPage(page);
+  const cardContainer = document.getElementById('cardContainer');
+  if (cardContainer) {
+    cardContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 // ==== Navbar Marker ====
