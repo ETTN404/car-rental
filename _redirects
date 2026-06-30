@@ -1,8 +1,6 @@
-/list           /list.html        200
-/product/:id    /detail2.html      200
-/blog           /Blog.html         200
-/index           /index.html         200
-/detail/*          /Detail.html         200
-/faq            /FAQ.html           200
-/home           /Home.html          200
-/*              /404.html         404
+/home            /index.html         200
+/index           /All_cars.html      200
+/blog            /Blog.html          200
+/detail/*        /Detail.html        200
+/faq             /FAQ.html           200
+/*               /404.html           404
