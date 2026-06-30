@@ -1,25 +1,21 @@
 
 
-// Extract the last part of the URL (e.g., "3" or "lamborghini-aventador")
-const pathParts = window.location.pathname.split('/').filter(Boolean);
-const identifier = pathParts[pathParts.length - 1]; // Gets "3" or "lamborghini-aventador"
+const urlParams = new URLSearchParams(window.location.search);
+const identifier = urlParams.get('id') || urlParams.get('slug');
 
-if (!identifier) {
-  console.error("No ID or slug found in URL");
-  window.location.href = "/404.html";
-}
-
-// Check if it's a numeric ID (e.g., "3") or a slug (e.g., "lamborghini-aventador")
-const isNumericId = /^\d+$/.test(identifier);
-
-if (isNumericId) {
-  const id = parseInt(identifier, 10);
-  console.log("Numeric ID:", id);
-  // Fetch car by ID (your existing logic)
+// We are using static data, so we don't need to enforce the identifier presence strictly for now,
+// but let's keep the logic if needed later.
+if (identifier) {
+  const isNumericId = /^\d+$/.test(identifier);
+  if (isNumericId) {
+    const id = parseInt(identifier, 10);
+    console.log("Numeric ID:", id);
+  } else {
+    const slug = identifier.toLowerCase();
+    console.log("Slug:", slug);
+  }
 } else {
-  const slug = identifier.toLowerCase(); // Ensure case-insensitive matching
-  console.log("Slug:", slug);
-  // Fetch car by slug (if your API supports it)
+  console.log("No specific car ID found, showing default static details.");
 }
 
 

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALL CARS</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="All_cars.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar Container -->
+<div class="navbar-container">
+  <!-- Upper Navbar for Sharing Logos -->
+  <div class="navbar-upper">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+  </div>
+
+  <!-- Divider with Marker -->
+  <div class="navbar-divider">
+    <div class="navbar-marker" id="marker"></div>
+  </div>
+
+  <!-- Lower Navbar -->
+  <div class="navbar-lower">
+    <div class="nav-links">
+      <a href="Home.html" class="nav-link" onclick="moveMarker(this)">HOME</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">ALL CARS</a>
+      <div class="dropdown">
+        <span class="dropdown-trigger nav-link" style="padding:33px" onclick="moveMarker(this)">
+          CATEGORIES <i class="fas fa-chevron-down"></i>
+        </span>
+        <div class="dropdown-content">
+          <div class="triangle"></div>
+          <a href="#">LUXURY</a>
+          <a href="#">SPORTS</a>
+          <a href="#">SUV</a>
+          <a href="#">CONVERTIBLE</a>
+        </div>
+      </div>
+      <a href="FAQ.html" class="nav-link" onclick="moveMarker(this)">FAQ</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">ABOUT US</a>
+      <a href="#" class="nav-link" onclick="moveMarker(this)">CONTACT</a>
+      <a href="Blog.html" class="nav-link" onclick="moveMarker(this)">BLOG</a>
+    </div>
+
+    <div class="contact-info">
+      <div class="lang-dropdown" id="langDropdown">
+        <a href="#" class="nav-link" onclick="toggleLanguageDropdown(event)">ENGLISH <i class="fas fa-chevron-down"></i></a>
+        <div class="lang-dropdown-content">
+          <a href="#">🇸🇦 العربية</a>
+          <a href="#">🇬🇧 ENGLISH</a>
+        </div>
+      </div>
+      <span style="border:1px rgba(255, 255, 255, 0.5) solid;padding:8px; margin-left:3px"><i class="fas fa-phone"></i> +971 50 123 4567</span>
+    </div>
+  </div>
+</div>
+
+<!-- Header Section -->
+<div class="header-section">
+  <div class="header-content">
+    <h1>ALL CARS</h1>
+    <div class="line-container">
+      <div class="line1"></div>
+      <div class="line2"></div>
+    </div>
+    <p>Home / All Cars</p>
+  </div>
+  <div class="triangle-left"></div>
+  <div class="triangle-right"></div>
+</div>
+
+<!-- Description Section -->
+<div class="description">
+  <h2>Luxury Car Rental Without Deposit: The Future of Car Rentals</h2>
+  <p>
+    Premium Crystal Car Rentals provides a unique traveler and resident experience having the option to hire a luxury car rental without deposit. 
+    We assure you service as it should be offered. It never requires a deposit. ...
+  </p>
+</div>
+
+<!-- Card Grid -->
+<div class="card-container" id="cardContainer"></div>
+
+<!-- Car Rental Section -->
+<div class="car-rental-section">
+  <h2>Sports Car Rental No Deposit - Designed For You</h2>
+  <div class="divider"><hr class="elementor-divider-separator"></div>
+  <p>At Premium Crystal Car Rental, we have an aggressive assortment of vehicles...</p>
+  <img src="PICS/new black Rolls Royce Ghost.jpg" alt="Sports Car" class="car-image">
+</div>
+
+<!-- More Car Rental Sections... -->
+
+<!-- Floating Buttons -->
+<div class="floating-buttons">
+  <button class="floating-button whatsapp" onclick="window.open('https://wa.me/1234567890')"><i class="fab fa-whatsapp"></i></button>
+  <button class="floating-button call" onclick="window.location.href='tel:+1234567890'"><i class="fas fa-phone"></i></button>
+</div>
+
+<!-- FAQ Section -->
+<div class="faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <p class="intro">At Premium Crystal, we are driven by our desire to ensure customer satisfaction...</p>
+  <div class="faq-container"></div> <!-- This must exist for JS -->
+</div>
+
+<!-- Office Location Section -->
+<div class="office-location">
+  <div class="office-logo"><img src="" alt="Premium Crystal Logo"></div>
+  <div class="line-container">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+  <div class="contact-container">
+    <div class="divider"><hr class="elementor-divider-separator"></div>
+    <h2>OFFICE LOCATION</h2>
+    <div class="address"><p><i class="fas fa-map-marker-alt"></i> Zajkl Building - Abu Hali Road, Dubai, UAE</p></div>
+    <div class="contact-grid">
+      <div class="contact-item"><h3><i class="fas fa-phone"></i> PHONE</h3><p>+971 566668807</p></div>
+      <div class="contact-item"><h3><i class="fas fa-envelope"></i> EMAIL</h3><p>contact@premiumcrystal.ae</p></div>
+      <div class="contact-item"><h3><i class="fas fa-clock"></i> HOURS</h3><p>All week days 24/7</p></div>
+    </div>
+  </div>
+  <div class="corner-decoration topleft"><img src="./SVG/l.svg"/></div>
+  <div class="corner-decoration topright"><img src="./SVG/r.svg"/></div>
+  <div class="corner-decoration bottomleft"></div>
+  <div class="corner-decoration bottomright"></div>
+  <div class="back-to-top"><div></div></div>
+  <a href="#" class="back-to-top-2">TOP</a>
+</div>
+
+<!-- Copyright -->
+<div class="copyright">
+  <p>&copy; 2023 Premium Crystal Car Rentals. All Rights Reserved.</p>
+</div>
+
+<!-- JS -->
+<script src="All_cars.js"></script><script >function initializeMarker() {
+  const navLinks = document.querySelectorAll('.nav-link'); // Get all elements with .nav-link
+  if (navLinks.length >= 2) { // Check if there are at least 2 links
+    moveMarker(navLinks[1]); // Move marker to the second link (index 1)
+  } else if (navLinks.length === 1) { // Fallback to first link if only one exists
+    moveMarker(navLinks[0]);
+  }
+}</script>
+</body>
+</html>
